@@ -21,7 +21,7 @@
             <address>
                 End: Guilherme Manteze 348<br>
                 Tel: (54) 98428-4023<br>
-                Email: <a href="#" onclick="copy()" id="botaoEmail">gabrielhenriquegemelli@gmail.com</a><br>
+                Email: <a href="#" onclick="exibirAlerta()">gabrielhenriquegemelli@gmail.com</a><br>
                 Repositorio: <a href="https://github.com/ximbas2508?tab=repositories" target="_blank">Meu portifolio</a>
             </address>
         </div>
@@ -102,8 +102,15 @@
                 <li>React</li>
             </ul>
         </section>
-
     </div>
+
+    <div id="alerta" class="alerta-customizado">
+        <h3>Alerta!</h3>
+        <p>Email copiado com sucesso!</p>
+        <button onclick="fecharAlerta()">OK</button>
+      </div>
+
+      <div id="overlay" class="overlay"></div>
 </body>
 
 
