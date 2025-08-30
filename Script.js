@@ -30,7 +30,7 @@ const i18n={
     langs_title:'Idiomas',
     langs_list_pt:'<li>Português — Nativo</li><li>Inglês — Fluente</li>',
     edu_title:'Educação',
-    edu_list_pt:'<li><strong>ATITUS Educação</strong> — Ciência da Computação</li><li><strong>Escola Scalabrini</strong> — Ensino Médio</li><li><strong>Escola Conceição</strong> — Ensino Fundamental</li>',
+    edu_list_pt:'<li><strong>ATITUS Educação</strong> — Ciência da Computação</li><li><strong>Hammond High school</strong> — High school</li><li><strong>Escola Scalabrini</strong> — Ensino Médio</li><li><strong>Escola Conceição</strong> — Ensino Fundamental</li>',
     tech_title:'Tecnologias',
     projects_title:'Projetos em destaque',
     projects_list_pt:'',
