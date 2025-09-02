@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="Script.js" defer></script>
 </head>
+
 <body>
   <header class="site-header">
     <nav class="container nav">
@@ -17,8 +18,8 @@
       <div class="lang-actions">
         <a class="chip" href="#" data-set-lang="pt">PT</a>
         <a class="chip" href="#" data-set-lang="en">EN</a>
-        <!-- Botão Baixar CV no topo -->
-        <a class="chip solid" href="assets\Curriculo ATT.pdf" download data-i18n="chip_cv">Baixar CV</a>
+        <!-- Corrigido para usar "/" -->
+        <a class="chip solid" href="assets/Curriculo ATT.pdf" download data-i18n="chip_cv">Baixar CV</a>
       </div>
     </nav>
   </header>
@@ -34,10 +35,10 @@
         <p class="location" data-i18n="location_pt">Passo Fundo, RS • Português/English</p>
         <div class="contacts">
           <a class="chip" href="#" onclick="exibirAlerta()" data-i18n="chip_copy">Copiar e-mail</a>
-          <a class="chip" href="https://wa.me/5554984284023" target="_blank" rel="noopener" data-i18n="chip_whatsapp">WhatsApp</a>
+          <a class="chip" href="https://api.whatsapp.com/send?phone=54984284023&text=Ola, Gostei do seu portifolio e gostaria de conversar sobre." target="_blank" rel="noopener" data-i18n="chip_whatsapp">WhatsApp</a>
           <a class="chip" href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener" data-i18n="chip_github">GitHub</a>
-          <!-- Botão Baixar CV também na área de contato -->
-          <a class="chip solid" href="assets\Curriculo ATT.pdf" download data-i18n="chip_cv">Baixar CV</a>
+          <!-- Corrigido para usar "/" -->
+          <a class="chip solid" href="assets/Curriculo ATT.pdf" download data-i18n="chip_cv">Baixar CV</a>
         </div>
       </div>
     </section>
@@ -45,7 +46,9 @@
     <section class="container grid">
       <section id="SobreMim" class="card">
         <h2 data-i18n="about_title">Sobre mim</h2>
-        <p data-i18n="about_body_pt">Sou apaixonado por computação, focado em programação e raciocínio lógico. Curso Ciência da Computação na <strong>ATITUS</strong> e sigo determinado a me tornar um desenvolvedor back-end. Comecei estudando online e hoje avanço com projetos práticos na faculdade e fora dela.</p>
+        <p data-i18n="about_body_pt">Sou apaixonado por computação, focado em programação e raciocínio lógico. Curso
+          Ciência da Computação na <strong>ATITUS</strong> e sigo determinado a me tornar um desenvolvedor back-end.
+          Comecei estudando online e hoje avanço com projetos práticos na faculdade e fora dela.</p>
       </section>
 
       <section id="objetivo" class="card">
@@ -120,11 +123,11 @@
         </div>
       </section>
 
-      <!-- NOVO: Certificados -->
+      <!-- Certificados -->
       <section id="Certificados" class="card span-2">
         <h2 data-i18n="certs_title">Certificados</h2>
-        <ul id="cert-list" class="list"></ul>
-        <p id="cert-empty" class="muted" data-i18n="certs_empty">Nenhum certificado adicionado ainda.</p>
+        <div id="cert-grid" class="projects"></div>
+        <p id="cert-empty" class="muted" data-i18n="certs_empty" style="margin-top:6px">Nenhum certificado adicionado ainda.</p>
       </section>
 
       <section id="Projetos" class="card span-2">
@@ -137,7 +140,7 @@
           </a>
           <a class="project" href="https://github.com/Gabriel-Henrique-Gemelli/GlicoHouse" target="_blank" rel="noopener">
             <h3>E-commerce de Insulina</h3>
-            <p>API para o trabalho SASS(GlicoHouse) </p>
+            <p>API para o trabalho SASS(GlicoHouse)</p>
             <span class="stack">Java • Spring Boot</span>
           </a>
           <a class="project" href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener">
@@ -160,11 +163,25 @@
     </div>
   </footer>
 
+  <!-- Modal de certificado -->
+  <div id="cert-modal" class="alerta-customizado" role="dialog" aria-modal="true" aria-labelledby="cert-title" style="display:none">
+    <h3 id="cert-title" data-field="name"></h3>
+    <p class="muted"><span data-field="meta"></span></p>
+    <iframe data-field="pdf" class="pdf-frame" style="display:none" title="Pré-visualização do certificado"></iframe>
+    <img data-field="img" style="display:none;max-width:100%;height:auto;border-radius:10px;margin:10px 0" alt="">
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
+      <a data-field="link" href="#" target="_blank" rel="noopener" class="chip solid" style="display:none">Abrir</a>
+      <button onclick="closeCertModal()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal de e-mail (já existente) -->
   <div id="alerta" class="alerta-customizado" role="dialog" aria-modal="true" aria-labelledby="alerta-title">
     <h3 id="alerta-title" data-i18n="alert_title">Pronto!</h3>
     <p data-i18n="alert_msg">E-mail copiado com sucesso.</p>
     <button onclick="fecharAlerta()" data-i18n="alert_ok">OK</button>
   </div>
-  <div id="overlay" class="overlay" onclick="fecharAlerta()"></div>
+
+  <div id="overlay" class="overlay"></div>
 </body>
 </html>

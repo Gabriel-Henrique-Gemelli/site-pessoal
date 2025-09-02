@@ -1,13 +1,26 @@
 function copy(){navigator.clipboard.writeText("gabrielhenriquegemelli@gmail.com")}
 function exibirAlerta(){copy();document.getElementById('alerta').style.display='block';document.getElementById('overlay').style.display='block';document.body.style.overflow='hidden'}
 function fecharAlerta(){document.getElementById('alerta').style.display='none';document.getElementById('overlay').style.display='none';document.body.style.overflow='auto'}
-document.addEventListener('keydown',e=>{if(e.key==='Escape') fecharAlerta()})
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){fecharAlerta();closeCertModal()}})
 
+/* ==== CERTIFICADOS (use pdf: 'caminho/arquivo.pdf') ==== */
 const CERTS=[
-  {name:'AWS Certified Cloud Practitioner',issuer:'AWS',year:'2025',url:''},
-  {name:'Java Fundamentals',issuer:'Oracle/Alura',year:'2024',url:''}
+  
+  {name:'AWS Certified Cloud Practitioner',issuer:'AWS',year:'2025',url:'',pdf:'assets/Certificados/AWS Certified Cloud Practitioner certificate.pdf'},
+  {name:'AWS Certified Cloud Practitioner — Exam Result',issuer:'AWS',year:'2025',url:'',pdf:'assets/Certificados/AWS Certified Cloud Practitioner (1).pdf'},
+  {name:'Java Fundamentals',issuer:'Oracle/Alura',year:'2024',url:'',pdf:'assets/Certificados/Java.pdf'},
+  {name:'Scholarship Program — Back-end Development (Spring Boot) for Commerce on AWS',issuer:'Compass UOL',year:'2025',url:'',pdf:'assets/Certificados/Gabriel Henrique Gemelli.pdf'},
+  {name:'Qualificação em Desenvolvimento de Aplicações Júnior (400h)',issuer:'ATITUS Educação',year:'2024',url:'',pdf:'assets/Certificados/Aplicaçoes.pdf'},
+  {name:'Qualificação em Desenvolvimento de Soluções (400h)',issuer:'ATITUS Educação',year:'2024',url:'',pdf:'assets/Certificados/Soluçoes.pdf'},
+  {name:'Workshop Hackday (8h)',issuer:'ATITUS Educação',year:'2023',url:'',pdf:'assets/Certificados/Certificado gabriel henrique gemelli 01_04_2023.pdf'},
+  {name:'Como Construir e Acelerar sua Carreira (1h)',issuer:'Even3',year:'2023',url:'',pdf:'assets/Certificados/Acelerar carreira.pdf'},
+  {name:'Comunicação Não Violenta (CNV)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/Certificado cnv.pdf'},
+  {name:'Atendimento ao Cliente: Presencial e Telefônico (2h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/Atendimento ao cliente.pdf'},
+  {name:'Atendimento ao Cliente, Vendas e Negociação (1h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/mpdf.pdf'},
+  {name:'A Arte de se Relacionar (1h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/A arte de se relacionar.pdf'}
 ];
 
+/* ==== I18N ==== */
 const i18n={
   pt:{
     doc_title:'Portfólio • Gabriel Henrique Gemelli',
@@ -64,7 +77,7 @@ const i18n={
     langs_title:'Languages',
     langs_list_pt:'<li>Portuguese — Native</li><li>English — Fluent</li>',
     edu_title:'Education',
-    edu_list_pt:'<li><strong>ATITUS Education</strong> — Computer Science</li><li><strong>Escola Scalabrini</strong> — High School</li><li><strong>Escola Conceição</strong> — Elementary School</li>',
+    edu_list_pt:'<li><strong>ATITUS Education</strong> — Computer Science</li> <li><strong>Hammond High school</strong> — High school</li><li><strong>Escola Scalabrini</strong> — High School</li><li><strong>Escola Conceição</strong> — Elementary School</li>',
     tech_title:'Technologies',
     projects_title:'Featured projects',
     projects_list_pt:'',
@@ -79,42 +92,86 @@ const i18n={
   }
 };
 
-function renderCerts(lang){
-  const dict=i18n[lang];
-  const ul=document.getElementById('cert-list');
-  const empty=document.getElementById('cert-empty');
-  if(!ul||!empty) return;
-  if(!CERTS.length){
-    ul.innerHTML='';empty.style.display='block';empty.innerHTML=dict.certs_empty;return;
-  }
-  empty.style.display='none';
-  ul.innerHTML=CERTS.map(c=>{
-    const link=c.url?` — <a href="${c.url}" target="_blank" rel="noopener">${dict.cert_view}</a>`:'';
-    const issuer=c.issuer?` — ${c.issuer}`:'';
-    const year=c.year?` (${c.year})`:'';
-    return `<li><strong>${c.name}</strong>${issuer}${year}${link}</li>`;
-  }).join('');
+/* ==== PREVIEW MODAL (PDF/IMG) ==== */
+function previewCert(e){
+  const el=(e&&(e.currentTarget||e.target))||(event&&(event.currentTarget||event.target))
+  const d=el.dataset
+  const m=document.getElementById('cert-modal')
+  m.querySelector('[data-field="name"]').textContent=d.certName||''
+  const issuer=d.certIssuer?` — ${d.certIssuer}`:''
+  const year=d.certYear?` (${d.certYear})`:''
+  m.querySelector('[data-field="meta"]').textContent=`${issuer}${year}`
+
+  const pdf=m.querySelector('[data-field="pdf"]')
+  const img=m.querySelector('[data-field="img"]')
+  const link=m.querySelector('[data-field="link"]')
+
+  if(d.certPdf){ pdf.src=d.certPdf; pdf.style.display='block'; img.removeAttribute('src'); img.style.display='none' }
+  else if(d.certImg){ img.src=d.certImg; img.alt=d.certName||'Certificado'; img.style.display='block'; pdf.removeAttribute('src'); pdf.style.display='none' }
+  else { pdf.removeAttribute('src'); pdf.style.display='none'; img.removeAttribute('src'); img.style.display='none' }
+
+  if(d.certUrl){ link.href=d.certUrl; link.style.display='inline-flex' } else { link.removeAttribute('href'); link.style.display='none' }
+
+  m.style.display='block'
+  document.getElementById('overlay').style.display='block'
+  document.body.style.overflow='hidden'
+}
+function closeCertModal(){
+  const m=document.getElementById('cert-modal')
+  if(m){ m.style.display='none' }
+  document.getElementById('overlay').style.display='none'
+  document.body.style.overflow='auto'
 }
 
+/* ==== CARDS DE CERTIFICADOS (layout = Projetos) ==== */
+function renderCertCards(lang){
+  const grid=document.getElementById('cert-grid')
+  const empty=document.getElementById('cert-empty')
+  if(!grid||!empty) return
+  grid.innerHTML=''
+  if(!CERTS.length){ empty.style.display='block'; return }
+  empty.style.display='none'
+  CERTS.forEach(c=>{
+    const card=document.createElement('a')
+    card.href='#'
+    card.className='project'
+    card.setAttribute('role','button')
+    card.dataset.certName=c.name||''
+    card.dataset.certIssuer=c.issuer||''
+    card.dataset.certYear=c.year||''
+    if(c.url) card.dataset.certUrl=c.url
+    if(c.img) card.dataset.certImg=c.img
+    if(c.pdf) card.dataset.certPdf=c.pdf
+    const metaTxt=[c.issuer,c.year].filter(Boolean).join(' • ')
+    card.innerHTML=`<h3>${c.name}</h3><p>${metaTxt}</p><span class="stack">${metaTxt||' '}</span>`
+    card.addEventListener('click',e=>{e.preventDefault();previewCert(e)})
+    grid.appendChild(card)
+  })
+}
+
+/* ==== LÍNGUA ==== */
 function setLang(lang){
-  const root=document.documentElement;
-  root.lang=lang==='pt'?'pt-BR':'en';
-  const dict=i18n[lang];
+  const root=document.documentElement
+  root.lang=lang==='pt'?'pt-BR':'en'
+  const dict=i18n[lang]
   document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const key=el.getAttribute('data-i18n');if(!dict[key]) return;el.innerHTML=dict[key];
-  });
-  document.title=dict.doc_title||document.title;
+    const key=el.getAttribute('data-i18n'); if(!dict[key]) return; el.innerHTML=dict[key]
+  })
+  document.title=dict.doc_title||document.title
   document.querySelectorAll('[data-set-lang]').forEach(a=>{
-    a.classList.toggle('active',a.getAttribute('data-set-lang')===lang);
-  });
-  localStorage.setItem('lang',lang);
-  renderCerts(lang);
+    a.classList.toggle('active',a.getAttribute('data-set-lang')===lang)
+  })
+  localStorage.setItem('lang',lang)
+  renderCertCards(lang)
 }
 
+/* ==== INIT ==== */
 document.addEventListener('DOMContentLoaded',()=>{
-  const y=document.getElementById('year');if(y) y.textContent=new Date().getFullYear();
-  const saved=localStorage.getItem('lang')||'pt';setLang(saved);
+  const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear()
+  const saved=localStorage.getItem('lang')||'pt'; setLang(saved)
   document.querySelectorAll('[data-set-lang]').forEach(a=>{
-    a.addEventListener('click',e=>{e.preventDefault();setLang(a.getAttribute('data-set-lang'));});
-  });
-});
+    a.addEventListener('click',e=>{ e.preventDefault(); setLang(a.getAttribute('data-set-lang')) })
+  })
+  const ov=document.getElementById('overlay')
+  if(ov){ ov.addEventListener('click',()=>{ closeCertModal(); fecharAlerta() }) }
+})
