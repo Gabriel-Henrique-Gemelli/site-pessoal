@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +10,6 @@
   <link rel="stylesheet" href="styles.css">
   <script src="Script.js" defer></script>
 </head>
-
 <body>
   <header class="site-header">
     <nav class="container nav">
@@ -27,7 +25,7 @@
   <main>
     <section class="container hero">
       <div class="hero-photo">
-        <img src="assets\EU.jpg" alt="Foto de Gabriel Henrique Gemelli" width="160" height="160" loading="lazy">
+        <img src="assets/Foto.jpeg" alt="Foto de Gabriel Henrique Gemelli" width="160" height="160" loading="lazy">
       </div>
       <div class="hero-info">
         <h1>Gabriel Henrique Gemelli</h1>
@@ -35,11 +33,8 @@
         <p class="location" data-i18n="location_pt">Passo Fundo, RS • Português/English</p>
         <div class="contacts">
           <a class="chip" href="#" onclick="exibirAlerta()" data-i18n="chip_copy">Copiar e-mail</a>
-          <a class="chip"
-            href="https://api.whatsapp.com/send?phone=54984284023&text=Ola, Gostei do seu portifolio e gostaria de conversar sobre."
-            target="_blank" rel="noopener" data-i18n="chip_whatsapp">WhatsApp</a>
-          <a class="chip" href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener"
-            data-i18n="chip_github">GitHub</a>
+          <a class="chip" href="https://api.whatsapp.com/send?phone=54984284023&text=Ola, Gostei do seu portifolio e gostaria de conversar sobre." target="_blank" rel="noopener" data-i18n="chip_whatsapp">WhatsApp</a>
+          <a class="chip" href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener" data-i18n="chip_github">GitHub</a>
           <a class="chip solid" href="assets/Curriculo ATT.pdf" download data-i18n="chip_cv">Baixar CV</a>
         </div>
       </div>
@@ -56,8 +51,7 @@
       <section id="objetivo" class="card">
         <h2 data-i18n="goal_title">Objetivo</h2>
         <ul class="list" data-i18n="goal_list_pt">
-          <li>Tornar-me um desenvolvedor <strong>back-end</strong> sólido, entregando APIs escaláveis e bem testadas.
-          </li>
+          <li>Tornar-me um desenvolvedor <strong>back-end</strong> sólido, entregando APIs escaláveis e bem testadas.</li>
           <li>Concluir a graduação com alta performance acadêmica.</li>
           <li>Contribuir em projetos que ajudem pessoas em escala.</li>
         </ul>
@@ -68,8 +62,8 @@
 
         <div class="xp-item">
           <div class="xp-header">
-            <span class="xp-role" data-i18n="xp_compass_role"><strong>Estagiário de Desenvolvimento Back-end
-                (AWS)</strong> • Compass UOL</span>
+            <span class="xp-role" data-i18n="xp_compass_role"><strong>Estagiário de Desenvolvimento Back-end (AWS)</strong> • Compass UOL</span>
+            <span class="xp-date" data-i18n="xp_compass_date">fev/2025 — jul/2025</span>
           </div>
           <ul class="list" data-i18n="xp_compass_list_pt">
             <li>Atuação no desenvolvimento de serviços back-end utilizando AWS.</li>
@@ -81,7 +75,7 @@
         <div class="xp-item">
           <div class="xp-header">
             <span class="xp-role" data-i18n="xp_inotek_role"><strong>Desenvolvedor Full-Stack</strong> • Inotek</span>
-            <span class="xp-date" data-i18n="xp_inotek_date">mai/2023 — atual</span>
+            <span class="xp-date" data-i18n="xp_inotek_date">mar/2024 — jul/2024</span>
           </div>
           <ul class="list" data-i18n="xp_inotek_list_pt">
             <li>Desenvolvimento de aplicações web com Angular.</li>
@@ -130,8 +124,7 @@
       <section id="Certificados" class="card span-2">
         <h2 data-i18n="certs_title">Certificados</h2>
         <div id="cert-grid" class="projects"></div>
-        <p id="cert-empty" class="muted" data-i18n="certs_empty" style="margin-top:6px">Nenhum certificado adicionado
-          ainda.</p>
+        <p id="cert-empty" class="muted" data-i18n="certs_empty" style="margin-top:6px">Nenhum certificado adicionado ainda.</p>
       </section>
 
       <section id="Projetos" class="card span-2">
@@ -146,14 +139,12 @@
       <div>© <span id="year"></span> Gabriel Henrique Gemelli</div>
       <div class="footer-links">
         <a href="#" onclick="exibirAlerta()" data-i18n="footer_email">E-mail</a>
-        <a href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener"
-          data-i18n="footer_github">GitHub</a>
+        <a href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener" data-i18n="footer_github">GitHub</a>
       </div>
     </div>
   </footer>
 
-  <div id="cert-modal" class="alerta-customizado" role="dialog" aria-modal="true" aria-labelledby="cert-title"
-    style="display:none">
+  <div id="cert-modal" class="alerta-customizado" role="dialog" aria-modal="true" aria-labelledby="cert-title" style="display:none">
     <h3 id="cert-title" data-field="name"></h3>
     <p class="muted"><span data-field="meta"></span></p>
     <iframe data-field="pdf" class="pdf-frame" style="display:none" title="Pré-visualização do certificado"></iframe>
@@ -172,5 +163,4 @@
 
   <div id="overlay" class="overlay"></div>
 </body>
-
 </html>
