@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +19,6 @@
       <div class="lang-actions">
         <a class="chip" href="#" data-set-lang="pt">PT</a>
         <a class="chip" href="#" data-set-lang="en">EN</a>
-        <!-- Corrigido para usar "/" -->
         <a class="chip solid" href="assets/Curriculo ATT.pdf" download data-i18n="chip_cv">Baixar CV</a>
       </div>
     </nav>
@@ -27,7 +27,7 @@
   <main>
     <section class="container hero">
       <div class="hero-photo">
-        <img src="assets/Foto.jpeg" alt="Foto de Gabriel Henrique Gemelli">
+        <img src="assets\EU.jpg" alt="Foto de Gabriel Henrique Gemelli" width="160" height="160" loading="lazy">
       </div>
       <div class="hero-info">
         <h1>Gabriel Henrique Gemelli</h1>
@@ -35,9 +35,11 @@
         <p class="location" data-i18n="location_pt">Passo Fundo, RS • Português/English</p>
         <div class="contacts">
           <a class="chip" href="#" onclick="exibirAlerta()" data-i18n="chip_copy">Copiar e-mail</a>
-          <a class="chip" href="https://api.whatsapp.com/send?phone=54984284023&text=Ola, Gostei do seu portifolio e gostaria de conversar sobre." target="_blank" rel="noopener" data-i18n="chip_whatsapp">WhatsApp</a>
-          <a class="chip" href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener" data-i18n="chip_github">GitHub</a>
-          <!-- Corrigido para usar "/" -->
+          <a class="chip"
+            href="https://api.whatsapp.com/send?phone=54984284023&text=Ola, Gostei do seu portifolio e gostaria de conversar sobre."
+            target="_blank" rel="noopener" data-i18n="chip_whatsapp">WhatsApp</a>
+          <a class="chip" href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener"
+            data-i18n="chip_github">GitHub</a>
           <a class="chip solid" href="assets/Curriculo ATT.pdf" download data-i18n="chip_cv">Baixar CV</a>
         </div>
       </div>
@@ -54,7 +56,8 @@
       <section id="objetivo" class="card">
         <h2 data-i18n="goal_title">Objetivo</h2>
         <ul class="list" data-i18n="goal_list_pt">
-          <li>Tornar-me um desenvolvedor <strong>back-end</strong> sólido, entregando APIs escaláveis e bem testadas.</li>
+          <li>Tornar-me um desenvolvedor <strong>back-end</strong> sólido, entregando APIs escaláveis e bem testadas.
+          </li>
           <li>Concluir a graduação com alta performance acadêmica.</li>
           <li>Contribuir em projetos que ajudem pessoas em escala.</li>
         </ul>
@@ -65,7 +68,8 @@
 
         <div class="xp-item">
           <div class="xp-header">
-            <span class="xp-role" data-i18n="xp_compass_role"><strong>Estagiário de Desenvolvimento Back-end (AWS)</strong> • Compass UOL</span>
+            <span class="xp-role" data-i18n="xp_compass_role"><strong>Estagiário de Desenvolvimento Back-end
+                (AWS)</strong> • Compass UOL</span>
           </div>
           <ul class="list" data-i18n="xp_compass_list_pt">
             <li>Atuação no desenvolvimento de serviços back-end utilizando AWS.</li>
@@ -123,32 +127,16 @@
         </div>
       </section>
 
-      <!-- Certificados -->
       <section id="Certificados" class="card span-2">
         <h2 data-i18n="certs_title">Certificados</h2>
         <div id="cert-grid" class="projects"></div>
-        <p id="cert-empty" class="muted" data-i18n="certs_empty" style="margin-top:6px">Nenhum certificado adicionado ainda.</p>
+        <p id="cert-empty" class="muted" data-i18n="certs_empty" style="margin-top:6px">Nenhum certificado adicionado
+          ainda.</p>
       </section>
 
       <section id="Projetos" class="card span-2">
         <h2 data-i18n="projects_title">Projetos em destaque</h2>
-        <div class="projects" id="projects" data-i18n="projects_list_pt">
-          <a class="project" href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener">
-            <h3>ERP360 IA (RAG)</h3>
-            <p>FastAPI + PostgreSQL com TF-IDF e embeddings, cache e endpoints de QA.</p>
-            <span class="stack">Python • FastAPI • NLP • RAG</span>
-          </a>
-          <a class="project" href="https://github.com/Gabriel-Henrique-Gemelli/GlicoHouse" target="_blank" rel="noopener">
-            <h3>E-commerce de Insulina</h3>
-            <p>API para o trabalho SASS(GlicoHouse)</p>
-            <span class="stack">Java • Spring Boot</span>
-          </a>
-          <a class="project" href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener">
-            <h3>Website ICARUS</h3>
-            <p>Landing page institucional com estética preto/vermelho.</p>
-            <span class="stack">React • Tailwind</span>
-          </a>
-        </div>
+        <div class="projects" id="projects"></div>
       </section>
     </section>
   </main>
@@ -158,13 +146,14 @@
       <div>© <span id="year"></span> Gabriel Henrique Gemelli</div>
       <div class="footer-links">
         <a href="#" onclick="exibirAlerta()" data-i18n="footer_email">E-mail</a>
-        <a href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener" data-i18n="footer_github">GitHub</a>
+        <a href="https://github.com/gabriel-henrique-gemelli" target="_blank" rel="noopener"
+          data-i18n="footer_github">GitHub</a>
       </div>
     </div>
   </footer>
 
-  <!-- Modal de certificado -->
-  <div id="cert-modal" class="alerta-customizado" role="dialog" aria-modal="true" aria-labelledby="cert-title" style="display:none">
+  <div id="cert-modal" class="alerta-customizado" role="dialog" aria-modal="true" aria-labelledby="cert-title"
+    style="display:none">
     <h3 id="cert-title" data-field="name"></h3>
     <p class="muted"><span data-field="meta"></span></p>
     <iframe data-field="pdf" class="pdf-frame" style="display:none" title="Pré-visualização do certificado"></iframe>
@@ -175,7 +164,6 @@
     </div>
   </div>
 
-  <!-- Modal de e-mail (já existente) -->
   <div id="alerta" class="alerta-customizado" role="dialog" aria-modal="true" aria-labelledby="alerta-title">
     <h3 id="alerta-title" data-i18n="alert_title">Pronto!</h3>
     <p data-i18n="alert_msg">E-mail copiado com sucesso.</p>
@@ -184,4 +172,5 @@
 
   <div id="overlay" class="overlay"></div>
 </body>
+
 </html>
