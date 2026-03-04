@@ -1,9 +1,27 @@
-function copy(){navigator.clipboard.writeText("gabrielhenriquegemelli@gmail.com")}
-function exibirAlerta(){copy();document.getElementById('alerta').style.display='block';document.getElementById('overlay').style.display='block';document.body.style.overflow='hidden'}
-function fecharAlerta(){document.getElementById('alerta').style.display='none';document.getElementById('overlay').style.display='none';document.body.style.overflow='auto'}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){fecharAlerta();closeCertModal()}})
+// =====================
+// EMAIL / ALERT
+// =====================
+function copy() { navigator.clipboard.writeText('gabrielhenriquegemelli@gmail.com'); }
 
-const CERTS=[
+function exibirAlerta() {
+  copy();
+  const m = document.getElementById('alerta');
+  m.style.display = 'flex';
+  m.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharAlerta() {
+  const m = document.getElementById('alerta');
+  m.style.display = 'none';
+  m.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// =====================
+// CERTIFICADOS DATA
+// =====================
+const CERTS = [
   {name:'AWS Certified Cloud Practitioner',issuer:'AWS',year:'2025',url:'',pdf:'assets/Certificados/AWS Certified Cloud Practitioner certificate.pdf'},
   {name:'AWS Certified Cloud Practitioner — Exam Result',issuer:'AWS',year:'2025',url:'',pdf:'assets/Certificados/AWS Certified Cloud Practitioner (1).pdf'},
   {name:'Java Fundamentals',issuer:'Oracle/Alura',year:'2024',url:'',pdf:'assets/Certificados/Java.pdf'},
@@ -15,133 +33,23 @@ const CERTS=[
   {name:'Comunicação Não Violenta (CNV)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/Certificado cnv.pdf'},
   {name:'Atendimento ao Cliente: Presencial e Telefônico (2h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/Atendimento ao cliente.pdf'},
   {name:'Atendimento ao Cliente, Vendas e Negociação (1h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/mpdf.pdf'},
-  {name:'A Arte de se Relacionar (1h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/A arte de se relacionar.pdf'}
+  {name:'A Arte de se Relacionar (1h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/A arte de se relacionar.pdf'},
+  {name:'Entendendo e Documentando REST / RESTful APIs (5h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/api rest.pdf'},
+  {name:'Aprenda a Criar Servidores Virtuais com EC2 na Amazon AWS (3h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/Aprenda a criar servidor virtual com ec2.pdf'},
+  {name:'Design Patterns em TypeScript — Entendendo Padrões de Projetos (6.5h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/Desing patterns.pdf'},
+  {name:'DOCKER Completo do Zero ao Avançado (5.5h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/Docker.pdf'},
+  {name:'Git e GitHub: Aprenda em 3 Dias com Projetos Reais (2.5h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/Git github.pdf'},
+  {name:'Node.js Microservices: NestJS, RabbitMQ and Cloud Services (22.5h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/Microservices.pdf'},
+  {name:'Dominando Banco de Dados com MySQL (4h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/My SQL.pdf'},
+  {name:'NestJS 10 Fundamentos (15h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/Nestjs 10 fundamentos.pdf'},
+  {name:'Node JS Curso Completo do Básico ao Avançado (10h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/Node js.pdf'},
+  {name:'Aprenda Postman em 1 Hora — Iniciante (1h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/PostMan.pdf'},
+  {name:'Aprenda TYPESCRIPT em 7 Dias com Projetos Práticos (5.5h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/typescript.pdf'}
 ];
 
-const i18n={
-  pt:{
-    doc_title:'Portfólio • Gabriel Henrique Gemelli',
-    subtitle_pt:'Desenvolvedor em formação • Back-end',
-    location_pt:'Passo Fundo, RS • Português/English',
-    chip_copy:'Copiar e-mail',
-    chip_whatsapp:'WhatsApp',
-    chip_github:'GitHub',
-    chip_cv:'Baixar CV',
-    about_title:'Sobre mim',
-    about_body_pt:'Sou apaixonado por computação, focado em programação e raciocínio lógico. Curso Ciência da Computação na <strong>ATITUS</strong> e sigo determinado a me tornar um desenvolvedor back-end. Comecei estudando online e hoje avanço com projetos práticos na faculdade e fora dela.',
-    goal_title:'Objetivo',
-    goal_list_pt:'<li>Tornar-me um desenvolvedor <strong>back-end</strong> sólido, entregando APIs escaláveis e bem testadas.</li><li>Concluir a graduação com alta performance acadêmica.</li><li>Contribuir em projetos que ajudem pessoas em escala.</li>',
-    xp_title:'Experiência Profissional',
-    xp_compass_role:'<strong>Estagiário de Desenvolvimento Back-end (AWS)</strong> • Compass UOL',
-    xp_compass_list_pt:'<li>Atuação no desenvolvimento de serviços back-end utilizando AWS.</li><li>Implementação de endpoints e rotinas server-side com foco em qualidade e boas práticas.</li><li>Colaboração em revisão de código e rotinas de versionamento com Git/GitHub.</li>',
-    xp_compass_date:'fev/2025 — jul/2025',
-    xp_inotek_role:'<strong>Desenvolvedor Full-Stack</strong> • Inotek',
-    xp_inotek_date:'mar/2024 — jul/2024',
-    xp_inotek_list_pt:'<li>Desenvolvimento de aplicações web com Angular.</li><li>Foco em melhorar a experiência em dispositivos Android.</li><li>Apoio à manutenção do produto principal.</li>',
-    langs_title:'Idiomas',
-    langs_list_pt:'<li>Português — Nativo</li><li>Inglês — Fluente</li>',
-    edu_title:'Educação',
-    edu_list_pt:'<li><strong>ATITUS Educação</strong> — Ciência da Computação</li><li><strong>Hammond High school</strong> — High school</li><li><strong>Escola Scalabrini</strong> — Ensino Médio</li><li><strong>Escola Conceição</strong> — Ensino Fundamental</li>',
-    tech_title:'Tecnologias',
-    projects_title:'Projetos em destaque',
-    projects_list_pt:'',
-    certs_title:'Certificados',
-    certs_empty:'Nenhum certificado adicionado ainda.',
-    cert_view:'ver',
-    footer_email:'E-mail',
-    footer_github:'GitHub',
-    alert_title:'Pronto!',
-    alert_msg:'E-mail copiado com sucesso.',
-    alert_ok:'OK'
-  },
-  en:{
-    doc_title:'Portfolio • Gabriel Henrique Gemelli',
-    subtitle_pt:'Developer in training • Back-end',
-    location_pt:'Passo Fundo, Brazil • Portuguese/English',
-    chip_copy:'Copy email',
-    chip_whatsapp:'WhatsApp',
-    chip_github:'GitHub',
-    chip_cv:'Download CV',
-    about_title:'About',
-    about_body_pt:'I am passionate about CS, focused on programming and logical thinking. I study Computer Science at <strong>ATITUS</strong> and I’m determined to become a back-end developer. I started online and now keep progressing with practical projects.',
-    goal_title:'Goal',
-    goal_list_pt:'<li>Become a solid <strong>back-end</strong> developer, delivering scalable and well-tested APIs.</li><li>Graduate with strong academic performance.</li><li>Contribute to projects that help people at scale.</li>',
-    xp_title:'Experience',
-    xp_compass_role:'<strong>Back-end Development Intern (AWS)</strong> • Compass UOL',
-    xp_compass_list_pt:'<li>Worked on back-end services using AWS.</li><li>Implemented endpoints and server-side routines emphasizing quality and best practices.</li><li>Collaborated on code reviews and version control with Git/GitHub.</li>',
-    xp_compass_date:'Feb/2025 — Jul/2025',
-    xp_inotek_role:'<strong>Full-Stack Developer</strong> • Inotek',
-    xp_inotek_date:'Mar/2024 — Jul/2024',
-    xp_inotek_list_pt:'<li>Web app development with Angular.</li><li>Improving UX on Android devices.</li><li>Support maintaining the main product.</li>',
-    langs_title:'Languages',
-    langs_list_pt:'<li>Portuguese — Native</li><li>English — Fluent</li>',
-    edu_title:'Education',
-    edu_list_pt:'<li><strong>ATITUS Education</strong> — Computer Science</li> <li><strong>Hammond High school</strong> — High school</li><li><strong>Escola Scalabrini</strong> — High School</li><li><strong>Escola Conceição</strong> — Elementary School</li>',
-    tech_title:'Technologies',
-    projects_title:'Featured projects',
-    projects_list_pt:'',
-    certs_title:'Certificates',
-    certs_empty:'No certificates added yet.',
-    cert_view:'view',
-    footer_email:'Email',
-    footer_github:'GitHub',
-    alert_title:'Done!',
-    alert_msg:'Email copied successfully.',
-    alert_ok:'OK'
-  }
-};
-
-function previewCert(e){
-  const el=(e&&(e.currentTarget||e.target))||(event&&(event.currentTarget||event.target));
-  const d=el.dataset;
-  const m=document.getElementById('cert-modal');
-  m.querySelector('[data-field="name"]').textContent=d.certName||'';
-  const issuer=d.certIssuer?` — ${d.certIssuer}`:'';
-  const year=d.certYear?` (${d.certYear})`:'';
-  m.querySelector('[data-field="meta"]').textContent=`${issuer}${year}`;
-  const pdf=m.querySelector('[data-field="pdf"]');
-  const img=m.querySelector('[data-field="img"]');
-  const link=m.querySelector('[data-field="link"]');
-  if(d.certPdf){ pdf.src=d.certPdf; pdf.style.display='block'; img.removeAttribute('src'); img.style.display='none'; }
-  else if(d.certImg){ img.src=d.certImg; img.alt=d.certName||'Certificado'; img.style.display='block'; pdf.removeAttribute('src'); pdf.style.display='none'; }
-  else { pdf.removeAttribute('src'); pdf.style.display='none'; img.removeAttribute('src'); img.style.display='none'; }
-  if(d.certUrl){ link.href=d.certUrl; link.style.display='inline-flex'; } else { link.removeAttribute('href'); link.style.display='none'; }
-  m.style.display='block';
-  document.getElementById('overlay').style.display='block';
-  document.body.style.overflow='hidden';
-}
-function closeCertModal(){
-  const m=document.getElementById('cert-modal');
-  if(m){ m.style.display='none'; }
-  document.getElementById('overlay').style.display='none';
-  document.body.style.overflow='auto';
-}
-
-function renderCertCards(){
-  const grid=document.getElementById('cert-grid');
-  const empty=document.getElementById('cert-empty');
-  if(!grid||!empty) return;
-  grid.innerHTML='';
-  if(!CERTS.length){ empty.style.display='block'; return; }
-  empty.style.display='none';
-  CERTS.forEach(c=>{
-    const card=document.createElement('a');
-    card.href='#';
-    card.className='project';
-    card.setAttribute('role','button');
-    card.dataset.certName=c.name||'';
-    card.dataset.certIssuer=c.issuer||'';
-    card.dataset.certYear=c.year||'';
-    if(c.url) card.dataset.certUrl=c.url;
-    if(c.img) card.dataset.certImg=c.img;
-    if(c.pdf) card.dataset.certPdf=c.pdf;
-    const metaTxt=[c.issuer,c.year].filter(Boolean).join(' • ');
-    card.innerHTML=`<h3>${c.name}</h3><p>${metaTxt}</p><span class="stack">${metaTxt||' '}</span>`;
-    card.addEventListener('click',e=>{e.preventDefault();previewCert(e);});
-    grid.appendChild(card);
-  });
-}
-
+// =====================
+// PROJETOS DATA
+// =====================
 const PROJECT_FOLDERS = [
   'crud-spring',
   'Projeto_financeiro',
@@ -154,65 +62,375 @@ const PROJECT_FOLDERS = [
 ];
 
 const PROJECT_META = {
-  'crud-spring': {desc:'API CRUD de estudos com Spring.', stack:'Java • Spring Boot'},
-  'Projeto_financeiro': {desc:'API em Java focada em prática de back-end.', stack:'Java • Spring Boot'},
-  'Memorizador': {desc:'Memorizador de itens (filmes, jogos, etc.)', stack:'Java • Spring Boot'},
-  'Projeto forca': {desc:'Jogo da forca.', stack:'Python'},
-  'atitusound': {desc:'API para um aplicativo de música.', stack:'Java • Spring Boot'},
-  'Angular': {desc:'Labs com Angular.', stack:'Angular'},
-  'projeto atitus': {desc:'Controle de participantes de um hackaton na ATITUS.', stack:'Python'},
-  'Glico House': {desc:'API para um e-commerce de insulina.', stack:'Java • Spring Boot', url:'https://github.com/Gabriel-Henrique-Gemelli/GlicoHouse'}
+  'crud-spring':       {desc:'API CRUD de estudos com Spring.',              descEn:'Study CRUD API with Spring.',                         stack:'Java • Spring Boot'},
+  'Projeto_financeiro':{desc:'API em Java focada em prática de back-end.',   descEn:'Java API focused on back-end practice.',              stack:'Java • Spring Boot'},
+  'Memorizador':       {desc:'Memorizador de itens (filmes, jogos, etc.)',   descEn:'Item tracker for movies, games, etc.',                stack:'Java • Spring Boot'},
+  'Projeto forca':     {desc:'Jogo da forca.',                               descEn:'Hangman game.',                                       stack:'Python'},
+  'atitusound':        {desc:'API para um aplicativo de música.',            descEn:'API for a music application.',                        stack:'Java • Spring Boot'},
+  'Angular':           {desc:'Labs com Angular.',                            descEn:'Labs with Angular.',                                  stack:'Angular'},
+  'projeto atitus':    {desc:'Controle de participantes de um hackaton na ATITUS.', descEn:'Hackathon participant manager at ATITUS.',     stack:'Python'},
+  'Glico House':       {desc:'API para um e-commerce de insulina.',          descEn:'API for an insulin e-commerce.',                      stack:'Java • Spring Boot', url:'https://github.com/Gabriel-Henrique-Gemelli/GlicoHouse'}
 };
 
-function prettyName(folder){
-  return folder.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase());
-}
-function urlFor(folder){
-  const base='https://github.com/Gabriel-Henrique-Gemelli/Projetos/tree/main/';
-  return base+encodeURIComponent(folder);
-}
-function renderProjectCards(){
-  const grid=document.getElementById('projects');
-  if(!grid) return;
-  grid.innerHTML='';
-  PROJECT_FOLDERS.forEach(folder=>{
-    const meta=PROJECT_META[folder]||{};
-    const a=document.createElement('a');
-    a.className='project';
-    a.href=meta.url||urlFor(folder);
-    a.target='_blank';
-    a.rel='noopener';
-    a.innerHTML=`
-      <h3>${prettyName(folder)}</h3>
-      <p>${meta.desc||'Projeto de estudos'}</p>
-      <span class="stack">${meta.stack||'—'}</span>
-    `;
-    grid.appendChild(a);
+// =====================
+// I18N
+// =====================
+let currentLang = 'pt';
+
+const i18n = {
+  pt: {
+    doc_title:            'Portfólio • Gabriel Henrique Gemelli',
+    subtitle_pt:          'Desenvolvedor Back-end',
+    location_pt:          '📍 Passo Fundo, RS • Português/English',
+    chip_copy:            'Copiar e-mail',
+    chip_whatsapp:        'WhatsApp',
+    chip_github:          'GitHub',
+    chip_cv:              'Baixar CV',
+    nav_about:            'Sobre',
+    nav_xp:               'Experiência',
+    nav_edu:              'Educação',
+    nav_certs:            'Certificados',
+    nav_projects:         'Projetos',
+    about_title:          'Sobre mim',
+    about_body_pt:        'Sou apaixonado por computação, focado em programação e raciocínio lógico. Curso Ciência da Computação na <strong>ATITUS</strong> e sigo determinado a me tornar um desenvolvedor back-end. Comecei estudando online e hoje avanço com projetos práticos na faculdade e fora dela.',
+    goal_title:           'Objetivo',
+    goal_list_pt:         '<li>Tornar-me um desenvolvedor <strong>back-end</strong> sólido, entregando APIs escaláveis e bem testadas.</li><li>Concluir a graduação com alta performance acadêmica.</li><li>Contribuir em projetos que ajudem pessoas em escala.</li>',
+    xp_title:             'Experiência Profissional',
+    xp_air_dev1_role_title:'Desenvolvedor 1 (Node.js / NestJS)',
+    xp_air_dev1_company:  'AI/R — Part-time (Remoto)',
+    xp_air_dev1_date:     'fev/2026 — presente',
+    xp_air_dev1_list_pt:  '<li>Desenvolvimento e manutenção de APIs REST prontas para produção com Node.js e NestJS.</li><li>Padronização de testes, revisão de código e padrões de integração para elevar qualidade e performance.</li><li>Entregas com Swagger/OpenAPI e Docker, garantindo confiabilidade em produção.</li>',
+    xp_air_intern_role_title:'Estagiário de Desenvolvimento Back-end (Node.js) — Contexto AWS',
+    xp_air_intern_company:'AI/R — Estágio (Remoto)',
+    xp_air_intern_date:   'nov/2025 — fev/2026',
+    xp_air_intern_list_pt:'<li>Desenvolvimento back-end com Node.js em contexto de nuvem AWS.</li><li>Implementação de endpoints e rotinas server-side com foco em qualidade e boas práticas.</li><li>Colaboração em revisão de código e versionamento com Git/GitHub.</li>',
+    xp_compass_role_title:'Estagiário de Desenvolvimento Back-end (AWS)',
+    xp_compass_company:   'Compass UOL',
+    xp_compass_date:      'fev/2025 — jul/2025',
+    xp_compass_list_pt:   '<li>Atuação no desenvolvimento de serviços back-end utilizando AWS.</li><li>Implementação de endpoints e rotinas server-side com foco em qualidade e boas práticas.</li><li>Colaboração em revisão de código e rotinas de versionamento com Git/GitHub.</li>',
+    xp_inotek_role_title: 'Desenvolvedor Full-Stack',
+    xp_inotek_company:    'Inotek',
+    xp_inotek_date:       'mar/2024 — jul/2024',
+    xp_inotek_list_pt:    '<li>Desenvolvimento de aplicações web com Angular.</li><li>Foco em melhorar a experiência em dispositivos Android.</li><li>Apoio à manutenção do produto principal.</li>',
+    langs_title:          'Idiomas',
+    langs_grid_pt:        '<div class="language-item"><span class="language-name">Português</span><span class="language-level">Nativo</span></div><div class="language-item"><span class="language-name">Inglês</span><span class="language-level">Fluente</span></div>',
+    edu_title:            'Educação',
+    edu_items_pt:         '<div class="education-item"><h3>ATITUS Educação</h3><p>Ciência da Computação</p></div><div class="education-item"><h3>Hammond High school</h3><p>High school</p></div><div class="education-item"><h3>Escola Scalabrini</h3><p>Ensino Médio</p></div><div class="education-item"><h3>Escola Conceição</h3><p>Ensino Fundamental</p></div>',
+    tech_title:           'Tecnologias',
+    projects_title:       'Projetos em destaque',
+    certs_title:          'Certificados',
+    certs_empty:          'Nenhum certificado adicionado ainda.',
+    footer_email:         'E-mail',
+    footer_github:        'GitHub',
+    alert_title:          'Pronto!',
+    alert_msg:            'E-mail copiado com sucesso.',
+    alert_ok:             'OK'
+  },
+  en: {
+    doc_title:            'Portfolio • Gabriel Henrique Gemelli',
+    subtitle_pt:          'Back-end Developer',
+    location_pt:          '📍 Passo Fundo, Brazil • Portuguese/English',
+    chip_copy:            'Copy email',
+    chip_whatsapp:        'WhatsApp',
+    chip_github:          'GitHub',
+    chip_cv:              'Download CV',
+    nav_about:            'About',
+    nav_xp:               'Experience',
+    nav_edu:              'Education',
+    nav_certs:            'Certificates',
+    nav_projects:         'Projects',
+    about_title:          'About',
+    about_body_pt:        'I am passionate about CS, focused on programming and logical thinking. I study Computer Science at <strong>ATITUS</strong> and I\'m determined to become a back-end developer. I started studying online and now keep progressing with practical projects.',
+    goal_title:           'Goal',
+    goal_list_pt:         '<li>Become a solid <strong>back-end</strong> developer, delivering scalable and well-tested APIs.</li><li>Graduate with strong academic performance.</li><li>Contribute to projects that help people at scale.</li>',
+    xp_title:             'Experience',
+    xp_air_dev1_role_title:'Developer 1 (Node.js / NestJS)',
+    xp_air_dev1_company:  'AI/R — Part-time (Remote)',
+    xp_air_dev1_date:     'Feb/2026 — Present',
+    xp_air_dev1_list_pt:  '<li>Building and maintaining production-ready REST APIs with Node.js and NestJS.</li><li>Standardizing testing, code review practices, and integration patterns to raise quality and performance.</li><li>Delivering with Swagger/OpenAPI and Docker, strengthening reliability in production.</li>',
+    xp_air_intern_role_title:'Back-end Development Intern (Node.js) — AWS Cloud Context',
+    xp_air_intern_company:'AI/R — Internship (Remote)',
+    xp_air_intern_date:   'Nov/2025 — Feb/2026',
+    xp_air_intern_list_pt:'<li>Back-end development with Node.js in an AWS cloud context.</li><li>Implemented endpoints and server-side routines emphasizing quality and best practices.</li><li>Collaborated on code reviews and version control with Git/GitHub.</li>',
+    xp_compass_role_title:'Back-end Development Intern (AWS)',
+    xp_compass_company:   'Compass UOL',
+    xp_compass_date:      'Feb/2025 — Jul/2025',
+    xp_compass_list_pt:   '<li>Worked on back-end services using AWS.</li><li>Implemented endpoints and server-side routines emphasizing quality and best practices.</li><li>Collaborated on code reviews and version control with Git/GitHub.</li>',
+    xp_inotek_role_title: 'Full-Stack Developer',
+    xp_inotek_company:    'Inotek',
+    xp_inotek_date:       'Mar/2024 — Jul/2024',
+    xp_inotek_list_pt:    '<li>Web app development with Angular.</li><li>Improving UX on Android devices.</li><li>Support maintaining the main product.</li>',
+    langs_title:          'Languages',
+    langs_grid_pt:        '<div class="language-item"><span class="language-name">Portuguese</span><span class="language-level">Native</span></div><div class="language-item"><span class="language-name">English</span><span class="language-level">Fluent</span></div>',
+    edu_title:            'Education',
+    edu_items_pt:         '<div class="education-item"><h3>ATITUS Education</h3><p>Computer Science</p></div><div class="education-item"><h3>Hammond High school</h3><p>High school</p></div><div class="education-item"><h3>Escola Scalabrini</h3><p>High School</p></div><div class="education-item"><h3>Escola Conceição</h3><p>Elementary School</p></div>',
+    tech_title:           'Technologies',
+    projects_title:       'Featured Projects',
+    certs_title:          'Certificates',
+    certs_empty:          'No certificates added yet.',
+    footer_email:         'Email',
+    footer_github:        'GitHub',
+    alert_title:          'Done!',
+    alert_msg:            'Email copied successfully.',
+    alert_ok:             'OK'
+  }
+};
+
+// =====================
+// FADE-IN OBSERVER
+// =====================
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, observerOptions);
+
+// =====================
+// RENDER CERTIFICADOS
+// =====================
+function renderCertCards() {
+  const grid = document.getElementById('cert-grid');
+  const empty = document.getElementById('cert-empty');
+  if (!grid || !empty) return;
+  grid.innerHTML = '';
+  if (!CERTS.length) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  CERTS.forEach((c, index) => {
+    const card = document.createElement('div');
+    card.className = 'certificate-card fade-in';
+    card.style.transitionDelay = `${index * 0.05}s`;
+    card.dataset.certName   = c.name   || '';
+    card.dataset.certIssuer = c.issuer || '';
+    card.dataset.certYear   = c.year   || '';
+    if (c.url) card.dataset.certUrl = c.url;
+    if (c.img) card.dataset.certImg = c.img;
+    if (c.pdf) card.dataset.certPdf = c.pdf;
+    const metaTxt = [c.issuer, c.year].filter(Boolean).join(' • ');
+    card.innerHTML = `<h3>${c.name}</h3><p class="cert-org">${metaTxt}</p>`;
+    card.addEventListener('click', previewCert);
+    grid.appendChild(card);
+    fadeObserver.observe(card);
   });
 }
 
-function setLang(lang){
-  const root=document.documentElement;
-  root.lang=lang==='pt'?'pt-BR':'en';
-  const dict=i18n[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const key=el.getAttribute('data-i18n'); if(!dict[key]) return; el.innerHTML=dict[key];
+// =====================
+// RENDER PROJETOS
+// =====================
+function prettyName(folder) {
+  return folder.replace(/[-_]/g, ' ').replace(/\b\w/g, m => m.toUpperCase());
+}
+function urlFor(folder) {
+  return 'https://github.com/Gabriel-Henrique-Gemelli/Projetos/tree/main/' + encodeURIComponent(folder);
+}
+
+function renderProjectCards() {
+  const grid = document.getElementById('projects');
+  if (!grid) return;
+  grid.innerHTML = '';
+  PROJECT_FOLDERS.forEach((folder, index) => {
+    const meta = PROJECT_META[folder] || {};
+    const a = document.createElement('a');
+    a.className = 'project-card fade-in';
+    a.style.transitionDelay = `${index * 0.05}s`;
+    a.href   = meta.url || urlFor(folder);
+    a.target = '_blank';
+    a.rel    = 'noopener';
+    const tags = (meta.stack || '').split(' • ').map(t => `<span class="project-tag">${t}</span>`).join('');
+    const desc = currentLang === 'en' ? (meta.descEn || meta.desc || 'Study project') : (meta.desc || 'Projeto de estudos');
+    a.innerHTML = `
+      <div class="project-content">
+        <h3>${prettyName(folder)}</h3>
+        <p>${desc}</p>
+        <div class="project-tags">${tags}</div>
+      </div>`;
+    grid.appendChild(a);
+    fadeObserver.observe(a);
   });
-  document.title=dict.doc_title||document.title;
-  document.querySelectorAll('[data-set-lang]').forEach(a=>{
-    a.classList.toggle('active',a.getAttribute('data-set-lang')===lang);
+}
+
+// =====================
+// MODAL DE CERTIFICADO
+// =====================
+function previewCert(e) {
+  const el = e.currentTarget || e.target;
+  const d  = el.dataset;
+  const m  = document.getElementById('cert-modal');
+  m.querySelector('[data-field="name"]').textContent = d.certName || '';
+  const issuer = d.certIssuer ? ` — ${d.certIssuer}` : '';
+  const year   = d.certYear   ? ` (${d.certYear})`   : '';
+  m.querySelector('[data-field="meta"]').textContent = `${issuer}${year}`;
+
+  const pdf  = m.querySelector('[data-field="pdf"]');
+  const img  = m.querySelector('[data-field="img"]');
+  const link = m.querySelector('[data-field="link"]');
+
+  if (d.certPdf) {
+    pdf.src = d.certPdf; pdf.style.display = 'block';
+    img.removeAttribute('src'); img.style.display = 'none';
+  } else if (d.certImg) {
+    img.src = d.certImg; img.alt = d.certName || 'Certificado'; img.style.display = 'block';
+    pdf.removeAttribute('src'); pdf.style.display = 'none';
+  } else {
+    pdf.removeAttribute('src'); pdf.style.display = 'none';
+    img.removeAttribute('src'); img.style.display = 'none';
+  }
+
+  if (d.certUrl) { link.href = d.certUrl; link.style.display = 'inline-block'; }
+  else           { link.removeAttribute('href'); link.style.display = 'none'; }
+
+  m.style.display = 'flex';
+  m.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCertModal() {
+  const m = document.getElementById('cert-modal');
+  if (m) { m.style.display = 'none'; m.classList.remove('active'); }
+  const viewer = document.getElementById('certificate-viewer');
+  if (viewer) viewer.src = '';
+  document.body.style.overflow = '';
+}
+
+// =====================
+// SISTEMA DE IDIOMA
+// =====================
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  const dict = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (!dict[key]) return;
+    el.innerHTML = dict[key];
   });
-  localStorage.setItem('lang',lang);
+  document.title = dict.doc_title || document.title;
+  document.querySelectorAll('[data-set-lang]').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+  });
+  localStorage.setItem('lang', lang);
   renderCertCards();
   renderProjectCards();
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
-  const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
-  const saved=localStorage.getItem('lang')||'pt'; setLang(saved);
-  document.querySelectorAll('[data-set-lang]').forEach(a=>{
-    a.addEventListener('click',e=>{ e.preventDefault(); setLang(a.getAttribute('data-set-lang')); });
+// =====================
+// NAVBAR SCROLL
+// =====================
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// =====================
+// ACTIVE NAV LINK ON SCROLL
+// =====================
+function updateActiveNav() {
+  const sections  = document.querySelectorAll('.section');
+  const navLinks  = document.querySelectorAll('.nav-link');
+  let current = '';
+
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - navbar.offsetHeight - 100) {
+      current = section.getAttribute('id');
+    }
   });
-  const ov=document.getElementById('overlay');
-  if(ov){ ov.addEventListener('click',()=>{ closeCertModal(); fecharAlerta(); }); }
+
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+  });
+}
+
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+// =====================
+// SMOOTH SCROLL
+// =====================
+function initSmoothScroll() {
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - navbar.offsetHeight - 20, behavior: 'smooth' });
+      }
+      // Fecha menu mobile se aberto
+      closeMobileMenu();
+    });
+  });
+}
+
+// =====================
+// PARALLAX HERO
+// =====================
+function initParallax() {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const hero = document.querySelector('.hero');
+    if (hero && scrolled < window.innerHeight) {
+      hero.style.transform = `translateY(${scrolled * 0.25}px)`;
+      hero.style.opacity   = Math.max(0, 1 - scrolled / 700);
+    }
+  }, { passive: true });
+}
+
+// =====================
+// MENU MOBILE
+// =====================
+let mobileMenuOpen = false;
+
+function closeMobileMenu() {
+  if (!mobileMenuOpen) return;
+  const navLinks = document.getElementById('nav-links');
+  const btn      = document.getElementById('mobile-menu-btn');
+  navLinks.classList.remove('open');
+  btn.classList.remove('open');
+  mobileMenuOpen = false;
+}
+
+function initMobileMenu() {
+  const btn      = document.getElementById('mobile-menu-btn');
+  const navLinks = document.getElementById('nav-links');
+
+  btn.addEventListener('click', () => {
+    mobileMenuOpen = !mobileMenuOpen;
+    navLinks.classList.toggle('open', mobileMenuOpen);
+    btn.classList.toggle('open', mobileMenuOpen);
+  });
+}
+
+// =====================
+// ESC KEY
+// =====================
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeCertModal(); fecharAlerta(); }
+});
+
+// =====================
+// INIT
+// =====================
+document.addEventListener('DOMContentLoaded', () => {
+  // Ano no footer
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Observar elementos estáticos com fade-in
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+  // Idioma salvo
+  const savedLang = localStorage.getItem('lang') || 'pt';
+  setLang(savedLang);
+
+  // Botões de idioma
+  document.querySelectorAll('[data-set-lang]').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.getAttribute('data-set-lang')));
+  });
+
+  // Fechar modais ao clicar no overlay
+  document.getElementById('cert-overlay').addEventListener('click', closeCertModal);
+  document.getElementById('alerta-overlay').addEventListener('click', fecharAlerta);
+
+  initSmoothScroll();
+  initParallax();
+  initMobileMenu();
 });
