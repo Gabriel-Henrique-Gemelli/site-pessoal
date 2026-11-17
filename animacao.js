@@ -98,6 +98,35 @@
   }
 
   // =====================
+  // FAIXA DAS FERRAMENTAS (corre com o scroll, duas linhas em sentidos opostos)
+  // =====================
+  function faixa(desktop) {
+    const band = $('#tools-band');
+    if (!band) return;
+    const dist = desktop ? 30 : 20; // % da largura da linha (que tem a lista duplicada)
+    const st = { trigger: band, start: 'top bottom', end: 'bottom top', scrub: 0.6 };
+    gsap.fromTo($('[data-band="1"]', band), { xPercent: 0 }, { xPercent: -dist, ease: 'none', scrollTrigger: st });
+    gsap.fromTo($('[data-band="2"]', band), { xPercent: -dist }, { xPercent: 0, ease: 'none', scrollTrigger: st });
+  }
+
+  // =====================
+  // CONTADORES DO SOBRE (3, 400, 55)
+  // =====================
+  function contadores() {
+    $$('.stat-n').forEach(el => {
+      const alvo = parseInt(el.textContent, 10);
+      if (!alvo) return;
+      const o = { v: 0 };
+      el.textContent = '0';
+      gsap.to(o, {
+        v: alvo, duration: 1.8, ease: 'power2.out',
+        onUpdate: () => { el.textContent = Math.round(o.v); },
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+      });
+    });
+  }
+
+  // =====================
   // ABERTURA "role para abrir"
   // =====================
   function abertura(desktop) {
@@ -151,6 +180,8 @@
         abertura(desktop);
         titulos(desktop);
         empilhar(desktop);
+        faixa(desktop);
+        contadores();
         return () => document.documentElement.classList.remove('js-anim');
       }
     );

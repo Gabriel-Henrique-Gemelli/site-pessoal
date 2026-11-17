@@ -271,6 +271,17 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .contact-line:hover { color: var(--orange-text); }
 .contact-line:hover .contact-arrow { transform: translate(4px, -4px); }
 
+/* faixa das ferramentas e contadores (animacao.js): só com GSAP ativo */
+.tools-band { display: none; }
+.js-anim .tools-band { display: grid; gap: 4px; margin: clamp(32px, 5vw, 64px) calc(50% - 50vw) 0; overflow: clip; }
+.band-row { display: flex; gap: 2.2rem; width: max-content; font-weight: 900; font-size: clamp(3rem, 9vw, 8rem); line-height: 1.05; letter-spacing: -0.045em; white-space: nowrap; will-change: transform; }
+.band-row span::after { content: '/'; margin-left: 2.2rem; color: var(--orange); font-weight: 400; }
+.band-row--serif { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: 0; color: var(--orange-text); }
+.band-row--serif span::after { color: var(--ink); }
+.js-anim .tools { margin-top: clamp(24px, 4vw, 48px); }
+.stat-n { font-variant-numeric: tabular-nums; }
+body { overflow-x: clip; }
+
 /* cards empilhados (animacao.js): sticky só no desktop e sem redução de movimento */
 .card { position: relative; }
 .card-shade { position: absolute; inset: 0; border-radius: inherit; background: #000; opacity: 0; pointer-events: none; }

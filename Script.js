@@ -270,6 +270,16 @@ function renderTools() {
       <p class="label">${t(g.cat)}</p>
       <ul class="tool-items">${g.items.map(i => `<li>${i}</li>`).join('')}</ul>
     </li>`).join('');
+
+  // Faixa decorativa (aria-hidden) com os mesmos nomes; "AWS (EC2, ...)" entra só como "AWS".
+  const band = document.getElementById('tools-band');
+  if (band) {
+    const nomes = FERRAMENTAS.flatMap(g => g.items).map(i => i.split(' (')[0]);
+    const meio = Math.ceil(nomes.length / 2);
+    const linha = lista => [...lista, ...lista].map(n => `<span>${n}</span>`).join('');
+    band.innerHTML = `<div class="band-row" data-band="1">${linha(nomes.slice(0, meio))}</div>` +
+                     `<div class="band-row band-row--serif" data-band="2">${linha(nomes.slice(meio))}</div>`;
+  }
 }
 
 function renderEdu() {
