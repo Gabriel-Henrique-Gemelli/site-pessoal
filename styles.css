@@ -196,7 +196,7 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .card--forest { background: var(--forest); color: var(--cream); }
 
 .card-main { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
-.card .label { color: inherit; opacity: 0.85; }
+.card .label { color: inherit; }
 .card-company { font-weight: 900; font-size: clamp(2.5rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.05em; }
 .card-role { font-weight: 800; font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.1; letter-spacing: -0.03em; }
 .card-side { display: flex; flex-direction: column; gap: 20px; }
@@ -274,12 +274,14 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
   .nav-links {
     position: absolute; top: var(--nav-h); left: 0; right: 0;
     flex-direction: column; gap: 0; padding: 8px var(--gutter) 20px;
-    background: var(--ink); display: none;
+    background: var(--ink); display: none; border-top: 1px solid #333; border-bottom: 1px solid var(--orange);
   }
   .nav-links.open { display: flex; }
   .nav-link { padding: 14px 0; }
   .nav-actions { margin-left: auto; }
   .about { grid-template-columns: 1fr; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-content { flex-direction: column; }
   .card { grid-template-columns: 1fr; min-height: 0; }
   .edu { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr; gap: 20px; }

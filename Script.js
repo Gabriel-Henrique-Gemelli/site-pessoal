@@ -451,6 +451,7 @@ function closeMobileMenu() {
   const btn      = document.getElementById('mobile-menu-btn');
   navLinks.classList.remove('open');
   btn.classList.remove('open');
+  btn.setAttribute('aria-expanded', false);
   mobileMenuOpen = false;
 }
 
@@ -462,6 +463,7 @@ function initMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;
     navLinks.classList.toggle('open', mobileMenuOpen);
     btn.classList.toggle('open', mobileMenuOpen);
+    btn.setAttribute('aria-expanded', mobileMenuOpen);
   });
 }
 
