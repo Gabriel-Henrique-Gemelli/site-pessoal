@@ -134,6 +134,9 @@ const i18n = {
   pt: {
     doc_title:     'Portfólio • Gabriel Henrique Gemelli',
     skip:          'Pular para o conteúdo',
+    intro_sub:     'Portfólio · 2026',
+    intro_line:    'Desenvolvedor back-end em Passo Fundo, RS.',
+    intro_hint:    'role para abrir',
     nav_about:     'Sobre',
     nav_xp:        'Trajeto',
     nav_tools:     'Ferramentas',
@@ -159,6 +162,9 @@ const i18n = {
   en: {
     doc_title:     'Portfolio • Gabriel Henrique Gemelli',
     skip:          'Skip to content',
+    intro_sub:     'Portfolio · 2026',
+    intro_line:    'Back-end developer in Passo Fundo, RS.',
+    intro_hint:    'scroll to open',
     nav_about:     'About',
     nav_xp:        'Path',
     nav_tools:     'Tools',
@@ -264,6 +270,16 @@ function renderTools() {
       <p class="label">${t(g.cat)}</p>
       <ul class="tool-items">${g.items.map(i => `<li>${i}</li>`).join('')}</ul>
     </li>`).join('');
+
+  // Faixa decorativa (aria-hidden) com os mesmos nomes; "AWS (EC2, ...)" entra só como "AWS".
+  const band = document.getElementById('tools-band');
+  if (band) {
+    const nomes = FERRAMENTAS.flatMap(g => g.items).map(i => i.split(' (')[0]);
+    const meio = Math.ceil(nomes.length / 2);
+    const linha = lista => [...lista, ...lista].map(n => `<span>${n}</span>`).join('');
+    band.innerHTML = `<div class="band-row" data-band="1">${linha(nomes.slice(0, meio))}</div>` +
+                     `<div class="band-row band-row--serif" data-band="2">${linha(nomes.slice(meio))}</div>`;
+  }
 }
 
 function renderEdu() {
@@ -391,6 +407,7 @@ function setLang(lang) {
   renderEdu();
   renderCertCards();
   renderProjectCards();
+  if (window.initAnimacoes) window.initAnimacoes();
 }
 
 // =====================
