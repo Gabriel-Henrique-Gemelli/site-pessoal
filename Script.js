@@ -19,35 +19,6 @@ function fecharAlerta() {
 }
 
 // =====================
-// CERTIFICADOS DATA
-// =====================
-const CERTS = [
-  {name:'AWS Certified Cloud Practitioner',issuer:'AWS',year:'2025',url:'',pdf:'assets/Certificados/AWS Certified Cloud Practitioner certificate.pdf'},
-  {name:'AWS Certified Cloud Practitioner — Exam Result',issuer:'AWS',year:'2025',url:'',pdf:'assets/Certificados/AWS Certified Cloud Practitioner (1).pdf'},
-  {name:'Java Fundamentals',issuer:'Oracle/Alura',year:'2024',url:'',pdf:'assets/Certificados/Java.pdf'},
-  {name:'Scholarship Program — Back-end Development (Spring Boot) for Commerce on AWS',issuer:'Compass UOL',year:'2025',url:'',pdf:'assets/Certificados/Gabriel Henrique Gemelli.pdf'},
-  {name:'Qualificação em Desenvolvimento de Aplicações Júnior (400h)',issuer:'ATITUS Educação',year:'2024',url:'',pdf:'assets/Certificados/Aplicaçoes.pdf'},
-  {name:'Qualificação em Desenvolvimento de Soluções (400h)',issuer:'ATITUS Educação',year:'2024',url:'',pdf:'assets/Certificados/Soluçoes.pdf'},
-  {name:'Workshop Hackday (8h)',issuer:'ATITUS Educação',year:'2023',url:'',pdf:'assets/Certificados/Certificado gabriel henrique gemelli 01_04_2023.pdf'},
-  {name:'Como Construir e Acelerar sua Carreira (1h)',issuer:'Even3',year:'2023',url:'',pdf:'assets/Certificados/Acelerar carreira.pdf'},
-  {name:'Comunicação Não Violenta (CNV)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/Certificado cnv.pdf'},
-  {name:'Atendimento ao Cliente: Presencial e Telefônico (2h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/Atendimento ao cliente.pdf'},
-  {name:'Atendimento ao Cliente, Vendas e Negociação (1h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/mpdf.pdf'},
-  {name:'A Arte de se Relacionar (1h)',issuer:'Alfasig Experience',year:'2025',url:'',pdf:'assets/Certificados/A arte de se relacionar.pdf'},
-  {name:'Entendendo e Documentando REST / RESTful APIs (5h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/api rest.pdf'},
-  {name:'Aprenda a Criar Servidores Virtuais com EC2 na Amazon AWS (3h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/Aprenda a criar servidor virtual com ec2.pdf'},
-  {name:'Design Patterns em TypeScript — Entendendo Padrões de Projetos (6.5h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/Desing patterns.pdf'},
-  {name:'DOCKER Completo do Zero ao Avançado (5.5h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/Docker.pdf'},
-  {name:'Git e GitHub: Aprenda em 3 Dias com Projetos Reais (2.5h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/Git github.pdf'},
-  {name:'Node.js Microservices: NestJS, RabbitMQ and Cloud Services (22.5h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/Microservices.pdf'},
-  {name:'Dominando Banco de Dados com MySQL (4h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/My SQL.pdf'},
-  {name:'NestJS 10 Fundamentos (15h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/Nestjs 10 fundamentos.pdf'},
-  {name:'Node JS Curso Completo do Básico ao Avançado (10h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/Node js.pdf'},
-  {name:'Aprenda Postman em 1 Hora — Iniciante (1h)',issuer:'Udemy',year:'2026',url:'',pdf:'assets/Certificados/PostMan.pdf'},
-  {name:'Aprenda TYPESCRIPT em 7 Dias com Projetos Práticos (5.5h)',issuer:'Udemy',year:'2025',url:'',pdf:'assets/Certificados/typescript.pdf'}
-];
-
-// =====================
 // TEXTOS (conteudo/portfolio-textos.md, aprovado)
 // =====================
 const t = o => (o && (o[currentLang] ?? o.pt)) || '';
@@ -112,6 +83,39 @@ const TITULOS = {
   tools: { pt: 'Caixa de <em>ferramentas</em>', en: 'Toolbox' },
   edu:   { pt: 'Formação<span class="dot">.</span>', en: 'Education<span class="dot">.</span>' }
 };
+
+const CERT_DIR = 'assets/Certificados/';
+// Em destaque: nome PT/EN, emissor e ano (conteudo aprovado). Metodologias Ágeis sem ano.
+const CERTS_DESTAQUE = [
+  { name: { pt: 'AWS Certified Cloud Practitioner', en: 'AWS Certified Cloud Practitioner' }, issuer: 'AWS', year: '2025', pdf: 'AWS Certified Cloud Practitioner certificate.pdf' },
+  { name: { pt: 'Scholarship Program, Back-end Development (Spring Boot) for Commerce on AWS', en: 'Scholarship Program, Back-end Development (Spring Boot) for Commerce on AWS' }, issuer: 'Compass UOL', year: '2025', pdf: 'Gabriel Henrique Gemelli.pdf' },
+  { name: { pt: 'Java Completo: Programação Orientada a Objetos + Projetos', en: 'Java Complete: Object-Oriented Programming + Projects' }, issuer: 'Udemy', year: '2025', pdf: 'Java.pdf' },
+  { name: { pt: 'Modelagem de Dados UML', en: 'UML Data Modeling' }, issuer: 'Udemy', year: '2025', pdf: 'UML.pdf' },
+  { name: { pt: 'Qualificação em Desenvolvimento de Soluções', en: 'Solution Development qualification' }, issuer: 'ATITUS Educação', year: '2024', pdf: 'Soluçoes.pdf' },
+  { name: { pt: 'Workshop Hackday', en: 'Hackday Workshop' }, issuer: 'ATITUS Educação', year: '2023', pdf: 'Certificado gabriel henrique gemelli 01_04_2023.pdf' },
+  { name: { pt: 'Metodologias Ágeis (XP, Scrum, Lean e Kanban)', en: 'Agile Methodologies (XP, Scrum, Lean and Kanban)' }, issuer: 'Udemy', year: '', pdf: 'Metodologias ageis.pdf' }
+];
+
+// "Ver todos": só nome e emissor (anos não conferidos).
+const CERTS_TODOS = [
+  ['Qualificação em Desenvolvimento de Aplicações Júnior', 'ATITUS Educação', 'Aplicaçoes.pdf'],
+  ['Como Construir e Acelerar sua Carreira', 'Even3', 'Acelerar carreira.pdf'],
+  ['Comunicação Não Violenta (CNV)', 'Alfasig Experience', 'Certificado cnv.pdf'],
+  ['Atendimento ao Cliente: Presencial e Telefônico', 'Alfasig Experience', 'Atendimento ao cliente.pdf'],
+  ['Atendimento ao Cliente, Vendas e Negociação', 'Alfasig Experience', 'mpdf.pdf'],
+  ['A Arte de se Relacionar', 'Alfasig Experience', 'A arte de se relacionar.pdf'],
+  ['Entendendo e Documentando REST / RESTful APIs', 'Udemy', 'api rest.pdf'],
+  ['Aprenda a Criar Servidores Virtuais com EC2 na Amazon AWS', 'Udemy', 'Aprenda a criar servidor virtual com ec2.pdf'],
+  ['Design Patterns em TypeScript: Entendendo Padrões de Projetos', 'Udemy', 'Desing patterns.pdf'],
+  ['Docker Completo do Zero ao Avançado', 'Udemy', 'Docker.pdf'],
+  ['Git e GitHub: Aprenda em 3 Dias com Projetos Reais', 'Udemy', 'Git github.pdf'],
+  ['Node.js Microservices: NestJS, RabbitMQ and Cloud Services', 'Udemy', 'Microservices.pdf'],
+  ['Dominando Banco de Dados com MySQL', 'Udemy', 'My SQL.pdf'],
+  ['NestJS 10 Fundamentos', 'Udemy', 'Nestjs 10 fundamentos.pdf'],
+  ['Node JS Curso Completo do Básico ao Avançado', 'Udemy', 'Node js.pdf'],
+  ['Aprenda Postman em 1 Hora (Iniciante)', 'Udemy', 'PostMan.pdf'],
+  ['Aprenda TypeScript em 7 Dias com Projetos Práticos', 'Udemy', 'typescript.pdf']
+].map(([name, issuer, pdf]) => ({ name: { pt: name, en: name }, issuer, year: '', pdf }));
 
 // =====================
 // I18N
@@ -224,27 +228,26 @@ const i18n = {
 // =====================
 // RENDER CERTIFICADOS
 // =====================
+function certButton(c) {
+  const meta = [c.issuer, c.year].filter(Boolean).join(' · ');
+  return `<li><button type="button" class="cert" data-cert-name="${t(c.name).replace(/"/g, '&quot;')}" data-cert-meta="${meta}" data-cert-pdf="${CERT_DIR}${c.pdf}">
+    <span class="cert-name">${t(c.name)}</span><span class="label">${meta}</span></button></li>`;
+}
+
 function renderCertCards() {
   const grid = document.getElementById('cert-grid');
   const empty = document.getElementById('cert-empty');
   if (!grid || !empty) return;
-  grid.innerHTML = '';
-  if (!CERTS.length) { empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
-  CERTS.forEach(c => {
-    const card = document.createElement('div');
-    card.className = 'certificate-card';
-    card.dataset.certName   = c.name   || '';
-    card.dataset.certIssuer = c.issuer || '';
-    card.dataset.certYear   = c.year   || '';
-    if (c.url) card.dataset.certUrl = c.url;
-    if (c.img) card.dataset.certImg = c.img;
-    if (c.pdf) card.dataset.certPdf = c.pdf;
-    const metaTxt = [c.issuer, c.year].filter(Boolean).join(' • ');
-    card.innerHTML = `<h3>${c.name}</h3><p class="cert-org">${metaTxt}</p>`;
-    card.addEventListener('click', previewCert);
-    grid.appendChild(card);
-  });
+  const total = CERTS_DESTAQUE.length + CERTS_TODOS.length;
+  empty.style.display = total ? 'none' : 'block';
+  const open = grid.querySelector('details')?.open ? ' open' : '';
+  grid.innerHTML = `
+    <ul class="cert-list">${CERTS_DESTAQUE.map(certButton).join('')}</ul>
+    <details class="cert-more"${open}>
+      <summary>${currentLang === 'en' ? 'See all' : 'Ver todos'}</summary>
+      <ul class="cert-list cert-list--small">${CERTS_TODOS.map(certButton).join('')}</ul>
+    </details>`;
+  grid.querySelectorAll('.cert').forEach(b => b.addEventListener('click', previewCert));
 }
 
 // =====================
@@ -343,32 +346,13 @@ function renderProjectCards() {
 // MODAL DE CERTIFICADO
 // =====================
 function previewCert(e) {
-  const el = e.currentTarget || e.target;
-  const d  = el.dataset;
-  const m  = document.getElementById('cert-modal');
+  const d = e.currentTarget.dataset;
+  const m = document.getElementById('cert-modal');
   m.querySelector('[data-field="name"]').textContent = d.certName || '';
-  const issuer = d.certIssuer ? ` — ${d.certIssuer}` : '';
-  const year   = d.certYear   ? ` (${d.certYear})`   : '';
-  m.querySelector('[data-field="meta"]').textContent = `${issuer}${year}`;
-
-  const pdf  = m.querySelector('[data-field="pdf"]');
-  const img  = m.querySelector('[data-field="img"]');
-  const link = m.querySelector('[data-field="link"]');
-
-  if (d.certPdf) {
-    pdf.src = d.certPdf; pdf.style.display = 'block';
-    img.removeAttribute('src'); img.style.display = 'none';
-  } else if (d.certImg) {
-    img.src = d.certImg; img.alt = d.certName || 'Certificado'; img.style.display = 'block';
-    pdf.removeAttribute('src'); pdf.style.display = 'none';
-  } else {
-    pdf.removeAttribute('src'); pdf.style.display = 'none';
-    img.removeAttribute('src'); img.style.display = 'none';
-  }
-
-  if (d.certUrl) { link.href = d.certUrl; link.style.display = 'inline-block'; }
-  else           { link.removeAttribute('href'); link.style.display = 'none'; }
-
+  m.querySelector('[data-field="meta"]').textContent = d.certMeta || '';
+  const pdf = m.querySelector('[data-field="pdf"]');
+  pdf.src = encodeURI(d.certPdf);
+  pdf.style.display = 'block';
   m.style.display = 'flex';
   m.classList.add('active');
   document.body.style.overflow = 'hidden';

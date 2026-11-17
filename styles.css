@@ -219,6 +219,24 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .edu-langs { margin-top: 40px; font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; }
 
 /* =====================
+   CERTIFICADOS
+   ===================== */
+.cert-list { margin-top: clamp(32px, 5vw, 64px); border-top: 1px solid var(--ink); }
+.cert {
+  width: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  padding: 20px 0; border-bottom: 1px solid var(--ink); text-align: left;
+}
+.cert:hover .cert-name { color: var(--orange-text); }
+.cert-name { font-weight: 800; font-size: clamp(1.1rem, 2.2vw, 1.6rem); letter-spacing: -0.03em; line-height: 1.2; }
+.cert .label { flex-shrink: 0; text-align: right; }
+.cert-more { margin-top: 32px; }
+.cert-more summary { cursor: pointer; display: inline-block; padding: 10px 20px; border: 1.5px solid var(--ink); border-radius: 999px; font-weight: 700; }
+.cert-more summary:hover { background: var(--ink); color: var(--cream); }
+.cert-list--small { margin-top: 24px; }
+.cert-list--small .cert { padding: 12px 0; }
+.cert-list--small .cert-name { font-size: 1.05rem; font-weight: 700; }
+
+/* =====================
    MOVIMENTO REDUZIDO
    ===================== */
 @media (prefers-reduced-motion: reduce) {
@@ -242,4 +260,6 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
   .about { grid-template-columns: 1fr; }
   .card { grid-template-columns: 1fr; min-height: 0; }
   .edu { grid-template-columns: 1fr; }
+  .cert { flex-direction: column; gap: 6px; }
+  .cert .label { text-align: left; }
 }
