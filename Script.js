@@ -73,6 +73,48 @@ const PROJECT_META = {
 };
 
 // =====================
+// TEXTOS (conteudo/portfolio-textos.md, aprovado)
+// =====================
+const t = o => (o && (o[currentLang] ?? o.pt)) || '';
+
+const TRAJETO = [
+  { color: 'orange', company: 'AI/R',
+    date: { pt: '2026.07 → agora', en: 'Jul 2026 → now' },
+    role: { pt: 'Backend Developer', en: 'Backend Developer' },
+    sub:  { pt: 'Java e Spring Boot', en: 'Java and Spring Boot' },
+    points: { pt: ['Back end com Java e Spring Boot, a stack principal', 'Promovido de Programmer I em jul 2026'],
+              en: ['Back end with Java and Spring Boot, the main stack', 'Promoted from Programmer I in Jul 2026'] },
+    tags: ['Java', 'Spring Boot'] },
+  { color: 'ink', company: 'AI/R',
+    date: { pt: '2026.02 → 2026.06', en: 'Feb 2026 → Jun 2026' },
+    role: { pt: 'Programmer I', en: 'Programmer I' },
+    sub:  { pt: 'Java e Spring Boot', en: 'Java and Spring Boot' },
+    points: { pt: ['Back end com Java e Spring Boot'], en: ['Back end with Java and Spring Boot'] },
+    tags: ['Java', 'Spring Boot'] },
+  { color: 'sand', company: 'AI/R',
+    date: { pt: '2025.11 → 2026.02', en: 'Nov 2025 → Feb 2026' },
+    role: { pt: 'Estágio back-end, Node.js', en: 'Backend Development Intern, Node.js' },
+    sub:  { pt: 'estágio, APIs REST', en: 'internship, REST APIs' },
+    points: { pt: ['APIs REST em Node.js com integração a banco de dados', 'Endpoints documentados e testados com Swagger/OpenAPI e Postman', 'Git e AWS no dia a dia'],
+              en: ['REST APIs in Node.js with database integration', 'Endpoints documented and tested with Swagger/OpenAPI and Postman', 'Git and AWS in daily work'] },
+    tags: ['Node.js', 'Swagger/OpenAPI', 'Postman', 'Git', 'AWS'] },
+  { color: 'forest', company: 'Compass UOL',
+    date: { pt: '2025.02 → 2025.07', en: 'Feb 2025 → Jul 2025' },
+    role: { pt: 'Estágio back-end, Spring Boot e AWS', en: 'Backend Development Intern, Spring Boot and AWS' },
+    sub:  { pt: 'programa intensivo', en: 'intensive program' },
+    points: { pt: ['Aplicações back-end com Java e Spring Boot', 'Bancos relacionais, Git e deploy na AWS', '400 horas de treinamento prático'],
+              en: ['Backend applications with Java and Spring Boot', 'Relational databases, Git and deployment to AWS', '400 hours of hands-on training'] },
+    tags: ['Java', 'Spring Boot', 'AWS', 'Git'] },
+  { color: 'orange', company: 'Inotek',
+    date: { pt: '2024.03 → 2024.06', en: 'Mar 2024 → Jun 2024' },
+    role: { pt: 'Desenvolvedor júnior', en: 'Junior Developer' },
+    sub:  { pt: 'web e Android', en: 'web and Android' },
+    points: { pt: ['App Android em Java, feito no Android Studio', 'Front end em Angular e TypeScript', 'Consumo de APIs REST e testes de usabilidade'],
+              en: ['Android app in Java, built in Android Studio', 'Angular and TypeScript front end', 'REST API consumption and usability tests'] },
+    tags: ['Java', 'Android', 'Angular', 'TypeScript'] }
+];
+
+// =====================
 // I18N
 // =====================
 let currentLang = 'pt';
@@ -207,6 +249,29 @@ function renderCertCards() {
 }
 
 // =====================
+// RENDER TRAJETO
+// =====================
+function renderTrajeto() {
+  const box = document.getElementById('trajeto-cards');
+  if (!box) return;
+  box.innerHTML = TRAJETO.map(j => `
+    <article class="card card--${j.color}">
+      <div class="card-main">
+        <p class="label card-date">${t(j.date)}</p>
+        <div>
+          <p class="card-company">${j.company}</p>
+          <p class="serif-note">${t(j.sub)}</p>
+        </div>
+      </div>
+      <div class="card-side">
+        <h3 class="card-role">${t(j.role)}</h3>
+        <ul class="card-points">${t(j.points).map(p => `<li>${p}</li>`).join('')}</ul>
+        <ul class="tags">${j.tags.map(g => `<li>${g}</li>`).join('')}</ul>
+      </div>
+    </article>`).join('');
+}
+
+// =====================
 // RENDER PROJETOS
 // =====================
 function prettyName(folder) {
@@ -299,6 +364,7 @@ function setLang(lang) {
     btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
   });
   localStorage.setItem('lang', lang);
+  renderTrajeto();
   renderCertCards();
   renderProjectCards();
 }

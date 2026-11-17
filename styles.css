@@ -2,6 +2,7 @@
    TOKENS
    ===================== */
 :root {
+  color-scheme: light; /* evita escurecimento automático do navegador */
   --cream: #f3f0e9;
   --sand: #e2dccb;
   --ink: #111111;
@@ -174,6 +175,30 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .footer a:hover { color: var(--orange-text); }
 
 /* =====================
+   CARDS (trajeto / projetos)
+   ===================== */
+.cards { display: grid; gap: 20px; }
+.card {
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(24px, 5vw, 72px);
+  padding: clamp(24px, 4vw, 40px); border-radius: var(--radius);
+  min-height: 360px;
+}
+.card--orange { background: var(--orange); color: var(--ink); }
+.card--ink    { background: var(--ink);    color: var(--cream); }
+.card--sand   { background: var(--sand);   color: var(--ink); }
+.card--forest { background: var(--forest); color: var(--cream); }
+
+.card-main { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+.card .label { color: inherit; opacity: 0.85; }
+.card-company { font-weight: 900; font-size: clamp(2.5rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.05em; }
+.card-role { font-weight: 800; font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.1; letter-spacing: -0.03em; }
+.card-side { display: flex; flex-direction: column; gap: 20px; }
+.card-points { margin-top: auto; }
+.card-points li { padding: 10px 0; border-top: 1px solid currentColor; font-size: 0.95rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { padding: 3px 12px; border: 1px solid currentColor; border-radius: 999px; font-family: var(--font-mono); font-size: 0.72rem; }
+
+/* =====================
    MOVIMENTO REDUZIDO
    ===================== */
 @media (prefers-reduced-motion: reduce) {
@@ -195,4 +220,5 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
   .nav-link { padding: 14px 0; }
   .nav-actions { margin-left: auto; }
   .about { grid-template-columns: 1fr; }
+  .card { grid-template-columns: 1fr; min-height: 0; }
 }
