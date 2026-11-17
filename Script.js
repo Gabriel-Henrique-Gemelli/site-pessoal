@@ -177,16 +177,6 @@ const i18n = {
 };
 
 // =====================
-// FADE-IN OBSERVER
-// =====================
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-const fadeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, observerOptions);
-
-// =====================
 // RENDER CERTIFICADOS
 // =====================
 function renderCertCards() {
@@ -196,10 +186,9 @@ function renderCertCards() {
   grid.innerHTML = '';
   if (!CERTS.length) { empty.style.display = 'block'; return; }
   empty.style.display = 'none';
-  CERTS.forEach((c, index) => {
+  CERTS.forEach(c => {
     const card = document.createElement('div');
-    card.className = 'certificate-card fade-in';
-    card.style.transitionDelay = `${index * 0.05}s`;
+    card.className = 'certificate-card';
     card.dataset.certName   = c.name   || '';
     card.dataset.certIssuer = c.issuer || '';
     card.dataset.certYear   = c.year   || '';
@@ -210,7 +199,6 @@ function renderCertCards() {
     card.innerHTML = `<h3>${c.name}</h3><p class="cert-org">${metaTxt}</p>`;
     card.addEventListener('click', previewCert);
     grid.appendChild(card);
-    fadeObserver.observe(card);
   });
 }
 
@@ -228,11 +216,10 @@ function renderProjectCards() {
   const grid = document.getElementById('projects');
   if (!grid) return;
   grid.innerHTML = '';
-  PROJECT_FOLDERS.forEach((folder, index) => {
+  PROJECT_FOLDERS.forEach(folder => {
     const meta = PROJECT_META[folder] || {};
     const a = document.createElement('a');
-    a.className = 'project-card fade-in';
-    a.style.transitionDelay = `${index * 0.05}s`;
+    a.className = 'project-card';
     a.href   = meta.url || urlFor(folder);
     a.target = '_blank';
     a.rel    = 'noopener';
@@ -245,7 +232,6 @@ function renderProjectCards() {
         <div class="project-tags">${tags}</div>
       </div>`;
     grid.appendChild(a);
-    fadeObserver.observe(a);
   });
 }
 
@@ -361,20 +347,6 @@ function initSmoothScroll() {
 }
 
 // =====================
-// PARALLAX HERO
-// =====================
-function initParallax() {
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const hero = document.querySelector('.hero');
-    if (hero && scrolled < window.innerHeight) {
-      hero.style.transform = `translateY(${scrolled * 0.25}px)`;
-      hero.style.opacity   = Math.max(0, 1 - scrolled / 700);
-    }
-  }, { passive: true });
-}
-
-// =====================
 // MENU MOBILE
 // =====================
 let mobileMenuOpen = false;
@@ -414,9 +386,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  // Observar elementos estáticos com fade-in
-  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
-
   // Idioma salvo
   const savedLang = localStorage.getItem('lang') || 'pt';
   setLang(savedLang);
@@ -431,6 +400,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('alerta-overlay').addEventListener('click', fecharAlerta);
 
   initSmoothScroll();
-  initParallax();
   initMobileMenu();
 });
