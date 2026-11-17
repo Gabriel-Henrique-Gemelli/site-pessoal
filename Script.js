@@ -121,7 +121,7 @@ const CONTATO = {
   title: { pt: 'Contato<span class="dot">.</span>', en: 'Contact<span class="dot">.</span>' },
   sub:   { pt: 'Projetos, código e dúvidas técnicas.', en: 'Projects, code and technical questions.' }
 };
-const WHATSAPP_URL = 'https://api.whatsapp.com/send?phone=54984284023&text=' + encodeURIComponent('Ola, Gostei do seu portfólio e gostaria de conversar sobre.');
+const WHATSAPP_URL = 'https://api.whatsapp.com/send?phone=54984284023&text=' + encodeURIComponent('Olá! Gostei do seu portfólio e gostaria de conversar.');
 const CV_PDF = { pt: 'assets/cv/curriculo-pt.pdf', en: 'assets/cv/curriculo-en.pdf' };
 const CV_LABEL = { pt: 'Currículo <em>(PT)</em>', en: 'Resume <em>(EN)</em>' };
 
