@@ -89,6 +89,30 @@ const TRAJETO = [
     tags: ['Java', 'Android', 'Angular', 'TypeScript'] }
 ];
 
+const FERRAMENTAS = [
+  { cat: { pt: 'Linguagens', en: 'Languages' }, items: ['Java', 'Python', 'JavaScript', 'TypeScript', 'Dart'] },
+  { cat: { pt: 'Back end', en: 'Back end' }, items: ['Spring Boot', 'Spring Security', 'Spring Data JPA', 'Spring AI', 'Spring Cloud', 'Node.js', 'NestJS'] },
+  { cat: { pt: 'IA', en: 'AI' }, items: ['Amazon Bedrock', 'RAG', 'pgvector', 'Ollama'] },
+  { cat: { pt: 'Bancos', en: 'Databases' }, items: ['PostgreSQL', 'MySQL', 'Flyway'] },
+  { cat: { pt: 'Nuvem e infra', en: 'Cloud and infra' }, items: ['AWS (EC2, S3, SQS, Lambda, Textract, Transcribe, Cognito)', 'Docker', 'Nginx', 'GitHub Actions'] },
+  { cat: { pt: 'Front end', en: 'Front end' }, items: ['Flutter', 'Angular', 'Android'] },
+  { cat: { pt: 'Qualidade e versão', en: 'Quality and versioning' }, items: ['Swagger/OpenAPI', 'Postman', 'Testcontainers', 'Git/GitHub'] }
+];
+
+const FORMACAO = [
+  { label: { pt: 'Atual', en: 'Current' }, name: 'ATITUS Educação',
+    sub: { pt: 'Ciência da Computação, 2023 a 2026', en: 'B.Sc. Computer Science, 2023 to 2026' } },
+  { label: { pt: 'Antes', en: 'Before' }, name: { pt: 'Hammond High School (EUA)', en: 'Hammond High School (USA)' },
+    sub: { pt: 'High school, ago 2018 a abr 2019', en: 'High school diploma, Aug 2018 to Apr 2019' } },
+  { label: { pt: 'Antes', en: 'Before' }, name: 'Escola Scalabrini',
+    sub: { pt: 'Ensino médio', en: 'High school' } }
+];
+const IDIOMAS = { pt: 'Português nativo, inglês fluente (C1+)', en: 'Native Portuguese, fluent English (C1+)' };
+const TITULOS = {
+  tools: { pt: 'Caixa de <em>ferramentas</em>', en: 'Toolbox' },
+  edu:   { pt: 'Formação<span class="dot">.</span>', en: 'Education<span class="dot">.</span>' }
+};
+
 // =====================
 // I18N
 // =====================
@@ -247,6 +271,36 @@ function renderTrajeto() {
 }
 
 // =====================
+// RENDER FERRAMENTAS E FORMAÇÃO
+// =====================
+function renderTools() {
+  const title = document.getElementById('tools-title');
+  const grid = document.getElementById('tools-grid');
+  if (!title || !grid) return;
+  title.innerHTML = t(TITULOS.tools);
+  grid.innerHTML = FERRAMENTAS.map(g => `
+    <li class="tool-group">
+      <p class="label">${t(g.cat)}</p>
+      <ul class="tool-items">${g.items.map(i => `<li>${i}</li>`).join('')}</ul>
+    </li>`).join('');
+}
+
+function renderEdu() {
+  const title = document.getElementById('edu-title');
+  const list = document.getElementById('edu-list');
+  const langs = document.getElementById('langs-line');
+  if (!title || !list || !langs) return;
+  title.innerHTML = t(TITULOS.edu);
+  list.innerHTML = FORMACAO.map(f => `
+    <div class="edu-item">
+      <p class="label">${t(f.label)}</p>
+      <p class="edu-name">${typeof f.name === 'string' ? f.name : t(f.name)}</p>
+      <p class="serif-note">${t(f.sub)}</p>
+    </div>`).join('');
+  langs.textContent = t(IDIOMAS);
+}
+
+// =====================
 // RENDER PROJETOS
 // =====================
 const PROJETOS = [
@@ -346,6 +400,8 @@ function setLang(lang) {
   });
   localStorage.setItem('lang', lang);
   renderTrajeto();
+  renderTools();
+  renderEdu();
   renderCertCards();
   renderProjectCards();
 }

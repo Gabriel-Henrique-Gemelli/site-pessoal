@@ -206,6 +206,19 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .card--sand .card-link:hover, .card--orange .card-link:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
 /* =====================
+   FERRAMENTAS / FORMAÇÃO
+   ===================== */
+.tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0; margin-top: clamp(32px, 5vw, 64px); border-top: 1px solid var(--ink); }
+.tool-group { padding: 24px 24px 32px 0; border-bottom: 1px solid var(--ink); }
+.tool-items { margin-top: 14px; display: grid; gap: 4px; }
+.tool-items li { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.2; }
+
+.edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 48px); margin-top: clamp(32px, 5vw, 64px); }
+.edu-item { padding-top: 16px; border-top: 1px solid var(--ink); }
+.edu-name { margin: 6px 0 4px; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; line-height: 1.15; }
+.edu-langs { margin-top: 40px; font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; }
+
+/* =====================
    MOVIMENTO REDUZIDO
    ===================== */
 @media (prefers-reduced-motion: reduce) {
@@ -228,4 +241,5 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
   .nav-actions { margin-left: auto; }
   .about { grid-template-columns: 1fr; }
   .card { grid-template-columns: 1fr; min-height: 0; }
+  .edu { grid-template-columns: 1fr; }
 }
