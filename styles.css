@@ -271,6 +271,18 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .contact-line:hover { color: var(--orange-text); }
 .contact-line:hover .contact-arrow { transform: translate(4px, -4px); }
 
+/* cards empilhados (animacao.js): sticky só no desktop e sem redução de movimento */
+.card { position: relative; }
+.card-shade { position: absolute; inset: 0; border-radius: inherit; background: #000; opacity: 0; pointer-events: none; }
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  .js-anim .cards { display: flex; flex-direction: column; }
+  .js-anim .cards .card {
+    position: sticky;
+    top: calc(var(--nav-h) + 20px + var(--i, 0) * 14px);
+    transform-origin: 50% 0;
+  }
+}
+
 /* títulos divididos por palavra/letra (animacao.js) */
 .word { display: inline-block; white-space: nowrap; }
 .char { display: inline-block; will-change: transform, opacity; }

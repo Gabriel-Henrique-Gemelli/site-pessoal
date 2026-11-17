@@ -68,6 +68,36 @@
   }
 
   // =====================
+  // CARDS EMPILHADOS (trajeto e projetos)
+  // Desktop: sticky (CSS) + o card de trás encolhe e escurece. Celular: só uma entrada leve.
+  // =====================
+  function empilhar(desktop) {
+    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 64;
+    ['#trajeto-cards', '#projects'].forEach(sel => {
+      const cards = $$('.card', $(sel));
+      if (!desktop) {
+        cards.forEach(c => gsap.from(c, { y: 40, opacity: 0, duration: 0.6, ease: 'power2.out',
+          scrollTrigger: { trigger: c, start: 'top 92%', once: true } }));
+        return;
+      }
+      cards.forEach((c, i) => {
+        c.style.setProperty('--i', i);
+        const sombra = document.createElement('div');
+        sombra.className = 'card-shade';
+        sombra.setAttribute('aria-hidden', 'true');
+        c.appendChild(sombra);
+      });
+      cards.forEach((c, i) => {
+        const proximo = cards[i + 1];
+        if (!proximo) return;
+        const st = { trigger: proximo, start: 'top bottom', end: 'top ' + (navH + 20 + (i + 1) * 14) + 'px', scrub: true };
+        gsap.to(c, { scale: 0.94, ease: 'none', scrollTrigger: st });
+        gsap.to($('.card-shade', c), { opacity: 0.55, ease: 'none', scrollTrigger: st });
+      });
+    });
+  }
+
+  // =====================
   // ABERTURA "role para abrir"
   // =====================
   function abertura(desktop) {
@@ -120,6 +150,7 @@
         document.documentElement.classList.add('js-anim');
         abertura(desktop);
         titulos(desktop);
+        empilhar(desktop);
         return () => document.documentElement.classList.remove('js-anim');
       }
     );
