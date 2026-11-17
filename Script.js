@@ -153,7 +153,7 @@ const i18n = {
     footer_top:    'topo ↑',
     modal_close:   'Fechar',
     alert_title:   'Pronto!',
-    alert_msg:     'E-mail copiado com sucesso.',
+    alert_msg:     'E-mail copiado.',
     alert_ok:      'OK'
   },
   en: {
@@ -178,7 +178,7 @@ const i18n = {
     footer_top:    'top ↑',
     modal_close:   'Close',
     alert_title:   'Done!',
-    alert_msg:     'Email copied successfully.',
+    alert_msg:     'Email copied.',
     alert_ok:      'OK'
   }
 };
@@ -190,8 +190,8 @@ const SOBRE = {
     { n: '55',  pt: 'migrations no banco do OrganizAI', en: 'database migrations in OrganizAI' }
   ],
   highlights: {
-    pt: ['Back end em Java e Spring Boot na AI/R', 'OrganizAI no ar na AWS: fiz o back end, o front end e a integração AWS, em grupo', 'AWS Certified Cloud Practitioner'],
-    en: ['Java and Spring Boot back end at AI/R', 'OrganizAI live on AWS: I built the back end, front end and AWS integration, in a group', 'AWS Certified Cloud Practitioner']
+    pt: ['Back end em Java e Spring Boot na AI/R', 'OrganizAI no ar na AWS. Em grupo, fiz o back end, o front end e a integração com a AWS', 'AWS Certified Cloud Practitioner'],
+    en: ['Java and Spring Boot back end at AI/R', 'OrganizAI live on AWS. In a group, I built the back end, front end and AWS integration', 'AWS Certified Cloud Practitioner']
   }
 };
 
@@ -307,8 +307,8 @@ function renderContact() {
 // =====================
 const PROJETOS = [
   { color: 'ink', name: 'OrganizAI',
-    desc: { pt: 'Assistente de documentos para construtoras. Lê contratos, alvarás e áudios de diário de obra, classifica cada arquivo, extrai campos e responde citando documento e página. Projeto de TCC em grupo: fiz o back end, o front end e a integração com a AWS. Roda na AWS EC2, com cobrança por Asaas.',
-            en: 'A document assistant for construction companies. It reads contracts, permits and site-diary audio, classifies each file, extracts fields and answers citing the document and page. Final-year group project: I built the back end, the front end and the AWS integration. It runs on AWS EC2, with billing through Asaas.' },
+    desc: { pt: 'Assistente de documentos para construtoras. Lê contratos, alvarás e áudios de diário de obra, classifica cada arquivo e extrai campos. As respostas citam o documento e a página. Projeto de TCC em grupo: fiz o back end, o front end e a integração com a AWS. Roda na AWS EC2, com cobrança por Asaas.',
+            en: 'A document assistant for construction companies. It reads contracts, permits and site-diary audio, classifies each file and extracts fields. Answers cite the document and page. Final-year group project: I built the back end, the front end and the AWS integration. It runs on AWS EC2, with billing through Asaas.' },
     tags: ['Java 21', 'Spring Boot', 'PostgreSQL', 'pgvector', 'Spring AI', 'Amazon Bedrock', 'AWS', 'Flutter'],
     url: 'https://organizaii.com.br', link: { pt: 'Ver o site', en: 'Visit the site' } },
   { color: 'sand', name: 'Microservices_java',
