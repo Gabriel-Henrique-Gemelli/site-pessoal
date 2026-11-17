@@ -117,6 +117,14 @@ const CERTS_TODOS = [
   ['Aprenda TypeScript em 7 Dias com Projetos Práticos', 'Udemy', 'typescript.pdf']
 ].map(([name, issuer, pdf]) => ({ name: { pt: name, en: name }, issuer, year: '', pdf }));
 
+const CONTATO = {
+  title: { pt: 'Contato<span class="dot">.</span>', en: 'Contact<span class="dot">.</span>' },
+  sub:   { pt: 'Projetos, código e dúvidas técnicas.', en: 'Projects, code and technical questions.' }
+};
+const WHATSAPP_URL = 'https://api.whatsapp.com/send?phone=54984284023&text=' + encodeURIComponent('Ola, Gostei do seu portifolio e gostaria de conversar sobre.');
+const CV_PDF = { pt: 'assets/cv/curriculo-pt.pdf', en: 'assets/cv/curriculo-en.pdf' };
+const CV_LABEL = { pt: 'Currículo <em>(PT)</em>', en: 'Resume <em>(EN)</em>' };
+
 // =====================
 // I18N
 // =====================
@@ -304,6 +312,27 @@ function renderEdu() {
 }
 
 // =====================
+// RENDER CONTATO
+// =====================
+function renderContact() {
+  const title = document.getElementById('contact-title');
+  const sub = document.getElementById('contact-sub');
+  const list = document.getElementById('contact-list');
+  if (!title || !sub || !list) return;
+  title.innerHTML = t(CONTATO.title);
+  sub.textContent = t(CONTATO.sub);
+  const ext = 'target="_blank" rel="noopener"';
+  const line = (inner, attrs) => `<li><a class="contact-line" ${attrs}><span>${inner}</span><span class="contact-arrow" aria-hidden="true">↗</span></a></li>`;
+  list.innerHTML = [
+    line('WhatsApp', `href="${WHATSAPP_URL}" ${ext}`),
+    `<li><button type="button" class="contact-line" onclick="exibirAlerta()"><span>${currentLang === 'en' ? 'Email' : 'E-mail'}</span><span class="contact-arrow" aria-hidden="true">↗</span></button></li>`,
+    line('GitHub', `href="https://github.com/Gabriel-Henrique-Gemelli" ${ext}`),
+    line('LinkedIn', `href="https://www.linkedin.com/in/gabriel-henrique-gemelli" ${ext}`),
+    line(t(CV_LABEL), `href="${CV_PDF[currentLang]}" download`).replace('↗', '↓')
+  ].join('');
+}
+
+// =====================
 // RENDER PROJETOS
 // =====================
 const PROJETOS = [
@@ -384,6 +413,7 @@ function setLang(lang) {
   });
   localStorage.setItem('lang', lang);
   renderTrajeto();
+  renderContact();
   renderTools();
   renderEdu();
   renderCertCards();

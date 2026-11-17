@@ -237,6 +237,21 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .cert-list--small .cert-name { font-size: 1.05rem; font-weight: 700; }
 
 /* =====================
+   CONTATO
+   ===================== */
+.contact-sub { margin-top: 16px; font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; }
+.contact-list { margin-top: clamp(32px, 5vw, 64px); border-top: 1px solid var(--ink); }
+.contact-line {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 22px 0; border-bottom: 1px solid var(--ink); text-align: left;
+  font-weight: 900; font-size: clamp(2rem, 6vw, 4.5rem); line-height: 1; letter-spacing: -0.045em;
+}
+.contact-line em { font-size: 1.05em; }
+.contact-arrow { font-size: 0.7em; transition: transform 0.2s ease; }
+.contact-line:hover { color: var(--orange-text); }
+.contact-line:hover .contact-arrow { transform: translate(4px, -4px); }
+
+/* =====================
    MOVIMENTO REDUZIDO
    ===================== */
 @media (prefers-reduced-motion: reduce) {
