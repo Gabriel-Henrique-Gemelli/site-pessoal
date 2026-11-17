@@ -136,6 +136,19 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .hero-title em { color: var(--orange); font-size: 1.05em; }
 .hero-sub { margin-top: 32px; max-width: 34ch; font-size: 1.25rem; color: #d9d5c9; }
 
+/* abertura "role para abrir" (só existe com GSAP ativo; ver animacao.js) */
+.intro { display: none; }
+.js-anim .hero { position: relative; overflow: clip; }
+.js-anim .hero .container { clip-path: circle(0% at 50% 55%); }
+.js-anim .intro {
+  display: flex; position: absolute; inset: 0; z-index: 5;
+  flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  pointer-events: none; text-align: center; color: var(--cream);
+}
+.intro-name { font-weight: 900; font-size: clamp(3rem, 10vw, 9rem); line-height: 0.9; letter-spacing: -0.05em; will-change: transform, opacity; }
+.hero .intro .label { margin: 0; color: var(--orange); }
+.hero .intro .intro-hint { position: absolute; bottom: 32px; color: #d9d5c9; }
+
 /* =====================
    SOBRE
    ===================== */
