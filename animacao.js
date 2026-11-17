@@ -3,6 +3,7 @@
 (function () {
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true }); // a barra de endereço do celular não deve refazer os pins
 
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -132,11 +133,15 @@
   function abertura(desktop) {
     const hero = $('#hero');
     const conteudo = $('#hero .container');
-    const nome = $('.intro-name');
-    const resto = $$('.intro-sub, .intro-hint');
+    const corpo = $('.intro-body');
+    const dica = $('.intro-hint');
+    const escuro = $('.hero-dark');
     const intro = $('.intro');
-    if (!hero || !conteudo || !nome || !intro) return null;
+    const nav = $('#navbar');
+    if (!hero || !conteudo || !corpo || !intro || !escuro) return null;
 
+    // a nav começa transparente (texto preto sobre o creme) e vira preta quando o círculo escuro chega ao topo
+    const navEscura = self => nav && nav.classList.toggle('is-dark', self.progress > 0.5);
     const { palavras, letras } = dividir($('.hero-title'));
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
@@ -146,14 +151,17 @@
         end: desktop ? '+=140%' : '+=90%',
         pin: true,
         scrub: 0.7,
-        anticipatePin: 1
+        anticipatePin: 1,
+        onUpdate: navEscura,
+        onRefresh: navEscura
       }
     });
-    tl.to(nome, { scale: desktop ? 9 : 4, opacity: 0, ease: 'power2.in', duration: 0.6 }, 0)
-      .to(resto, { opacity: 0, y: -30, duration: 0.25 }, 0)
-      .fromTo(conteudo,
+    // o círculo preto cresce sobre o creme; o bloco "Gabriel Gemelli" se aproxima e some
+    tl.to(corpo, { scale: desktop ? 2.4 : 1.6, opacity: 0, ease: 'power2.in', duration: 0.6 }, 0)
+      .to(dica, { opacity: 0, duration: 0.2 }, 0)
+      .fromTo([escuro, conteudo],
         { clipPath: 'circle(0% at 50% 55%)' },
-        { clipPath: 'circle(150% at 50% 55%)', ease: 'power1.inOut', duration: 0.7 }, 0.2)
+        { clipPath: 'circle(150% at 50% 55%)', ease: 'power1.inOut', duration: 0.7 }, 0.1)
       .fromTo(desktop ? letras : palavras,
         { yPercent: 120, rotate: desktop ? 8 : 0, opacity: 0 },
         { yPercent: 0, rotate: 0, opacity: 1, ease: 'power3.out', stagger: desktop ? 0.015 : 0.08, duration: 0.5 }, 0.5)

@@ -134,9 +134,9 @@ const i18n = {
   pt: {
     doc_title:     'Portfólio • Gabriel Henrique Gemelli',
     skip:          'Pular para o conteúdo',
-    intro_name:    'Gabriel Gemelli',
     intro_sub:     'Portfólio · 2026',
-    intro_hint:    'role para abrir ↓',
+    intro_line:    'Desenvolvedor back-end em Passo Fundo, RS.',
+    intro_hint:    'role para abrir',
     nav_about:     'Sobre',
     nav_xp:        'Trajeto',
     nav_tools:     'Ferramentas',
@@ -162,9 +162,9 @@ const i18n = {
   en: {
     doc_title:     'Portfolio • Gabriel Henrique Gemelli',
     skip:          'Skip to content',
-    intro_name:    'Gabriel Gemelli',
     intro_sub:     'Portfolio · 2026',
-    intro_hint:    'scroll to open ↓',
+    intro_line:    'Back-end developer in Passo Fundo, RS.',
+    intro_hint:    'scroll to open',
     nav_about:     'About',
     nav_xp:        'Path',
     nav_tools:     'Tools',
