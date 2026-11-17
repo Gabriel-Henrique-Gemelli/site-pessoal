@@ -198,6 +198,13 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tags li { padding: 3px 12px; border: 1px solid currentColor; border-radius: 999px; font-family: var(--font-mono); font-size: 0.72rem; }
 
+/* projetos */
+.card-company--project { font-size: clamp(1.9rem, 3.6vw, 3.25rem); overflow-wrap: anywhere; }
+.card-desc { font-size: 1rem; line-height: 1.5; }
+.card-link { align-self: flex-start; padding: 10px 20px; border: 1.5px solid currentColor; border-radius: 999px; font-weight: 700; }
+.card-link:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+.card--sand .card-link:hover, .card--orange .card-link:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
 /* =====================
    MOVIMENTO REDUZIDO
    ===================== */

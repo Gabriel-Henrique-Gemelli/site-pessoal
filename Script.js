@@ -48,31 +48,6 @@ const CERTS = [
 ];
 
 // =====================
-// PROJETOS DATA
-// =====================
-const PROJECT_FOLDERS = [
-  'crud-spring',
-  'Projeto_financeiro',
-  'Memorizador',
-  'Projeto forca',
-  'atitusound',
-  'Angular',
-  'projeto atitus',
-  'Glico House'
-];
-
-const PROJECT_META = {
-  'crud-spring':       {desc:'API CRUD de estudos com Spring.',              descEn:'Study CRUD API with Spring.',                         stack:'Java • Spring Boot'},
-  'Projeto_financeiro':{desc:'API em Java focada em prática de back-end.',   descEn:'Java API focused on back-end practice.',              stack:'Java • Spring Boot'},
-  'Memorizador':       {desc:'Memorizador de itens (filmes, jogos, etc.)',   descEn:'Item tracker for movies, games, etc.',                stack:'Java • Spring Boot'},
-  'Projeto forca':     {desc:'Jogo da forca.',                               descEn:'Hangman game.',                                       stack:'Python'},
-  'atitusound':        {desc:'API para um aplicativo de música.',            descEn:'API for a music application.',                        stack:'Java • Spring Boot'},
-  'Angular':           {desc:'Labs com Angular.',                            descEn:'Labs with Angular.',                                  stack:'Angular'},
-  'projeto atitus':    {desc:'Controle de participantes de um hackaton na ATITUS.', descEn:'Hackathon participant manager at ATITUS.',     stack:'Python'},
-  'Glico House':       {desc:'API para um e-commerce de insulina.',          descEn:'API for an insulin e-commerce.',                      stack:'Java • Spring Boot', url:'https://github.com/Gabriel-Henrique-Gemelli/GlicoHouse'}
-};
-
-// =====================
 // TEXTOS (conteudo/portfolio-textos.md, aprovado)
 // =====================
 const t = o => (o && (o[currentLang] ?? o.pt)) || '';
@@ -274,34 +249,40 @@ function renderTrajeto() {
 // =====================
 // RENDER PROJETOS
 // =====================
-function prettyName(folder) {
-  return folder.replace(/[-_]/g, ' ').replace(/\b\w/g, m => m.toUpperCase());
-}
-function urlFor(folder) {
-  return 'https://github.com/Gabriel-Henrique-Gemelli/Projetos/tree/main/' + encodeURIComponent(folder);
-}
+const PROJETOS = [
+  { color: 'ink', name: 'OrganizAI',
+    desc: { pt: 'Assistente de documentos para construtoras. Lê contratos, alvarás e áudios de diário de obra, classifica cada arquivo, extrai campos e responde citando documento e página. Projeto de TCC em grupo: fiz o back end, o front end e a integração com a AWS. Roda na AWS EC2, com cobrança por Asaas.',
+            en: 'A document assistant for construction companies. It reads contracts, permits and site-diary audio, classifies each file, extracts fields and answers citing the document and page. Final-year group project: I built the back end, the front end and the AWS integration. It runs on AWS EC2, with billing through Asaas.' },
+    tags: ['Java 21', 'Spring Boot', 'PostgreSQL', 'pgvector', 'Spring AI', 'Amazon Bedrock', 'AWS', 'Flutter'],
+    url: 'https://organizaii.com.br', link: { pt: 'Ver o site', en: 'Visit the site' } },
+  { color: 'sand', name: 'Microservices_java',
+    desc: { pt: 'Doze módulos Maven: Config, Eureka e Gateway, mais nove serviços de domínio. Usa OpenFeign, circuit breaker com Resilience4j, JWT, Flyway e PostgreSQL. O Docker Compose sobe 8 serviços de domínio, 3 de infraestrutura e 5 bancos.',
+            en: 'Twelve Maven modules: Config, Eureka and Gateway, plus nine domain services. It uses OpenFeign, a Resilience4j circuit breaker, JWT, Flyway and PostgreSQL. Docker Compose starts 8 domain services, 3 infrastructure services and 5 databases.' },
+    tags: ['Spring Cloud', 'Resilience4j', 'JWT', 'Flyway', 'PostgreSQL', 'Docker'],
+    url: 'https://github.com/Gabriel-Henrique-Gemelli/Microservices_java', link: { pt: 'Ver o código', en: 'View the code' } },
+  { color: 'forest', name: 'GlicoHouse',
+    sub: { pt: 'Back end de e-commerce', en: 'E-commerce back end' },
+    desc: { pt: 'Back end em Java 21 e Spring Boot. Login com JWT, papéis de admin e cliente, redefinição de senha por e-mail, carrinho com baixa de estoque, histórico de compras e relatórios para o admin. Banco MySQL.',
+            en: 'Back end in Java 21 and Spring Boot. JWT login, admin and customer roles, password reset by email, a cart that updates stock on purchase, purchase history and admin reports. MySQL database.' },
+    tags: ['Java 21', 'Spring Boot', 'Spring Security', 'JWT', 'MySQL'],
+    url: 'https://github.com/Gabriel-Henrique-Gemelli/GlicoHouse', link: { pt: 'Ver o código', en: 'View the code' } }
+];
 
 function renderProjectCards() {
-  const grid = document.getElementById('projects');
-  if (!grid) return;
-  grid.innerHTML = '';
-  PROJECT_FOLDERS.forEach(folder => {
-    const meta = PROJECT_META[folder] || {};
-    const a = document.createElement('a');
-    a.className = 'project-card';
-    a.href   = meta.url || urlFor(folder);
-    a.target = '_blank';
-    a.rel    = 'noopener';
-    const tags = (meta.stack || '').split(' • ').map(t => `<span class="project-tag">${t}</span>`).join('');
-    const desc = currentLang === 'en' ? (meta.descEn || meta.desc || 'Study project') : (meta.desc || 'Projeto de estudos');
-    a.innerHTML = `
-      <div class="project-content">
-        <h3>${prettyName(folder)}</h3>
-        <p>${desc}</p>
-        <div class="project-tags">${tags}</div>
-      </div>`;
-    grid.appendChild(a);
-  });
+  const box = document.getElementById('projects');
+  if (!box) return;
+  box.innerHTML = PROJETOS.map(p => `
+    <article class="card card--${p.color}">
+      <div class="card-main">
+        <p class="card-company card-company--project">${p.name}</p>
+        ${p.sub ? `<p class="serif-note">${t(p.sub)}</p>` : ''}
+      </div>
+      <div class="card-side">
+        <p class="card-desc">${t(p.desc)}</p>
+        <ul class="tags">${p.tags.map(g => `<li>${g}</li>`).join('')}</ul>
+        <a class="card-link" href="${p.url}" target="_blank" rel="noopener">${t(p.link)} ↗</a>
+      </div>
+    </article>`).join('');
 }
 
 // =====================
