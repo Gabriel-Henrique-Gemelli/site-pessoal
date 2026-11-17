@@ -132,106 +132,76 @@ let currentLang = 'pt';
 
 const i18n = {
   pt: {
-    doc_title:            'Portfólio • Gabriel Henrique Gemelli',
-    subtitle_pt:          'Desenvolvedor Back-end',
-    location_pt:          '📍 Passo Fundo, RS • Português/English',
-    chip_copy:            'Copiar e-mail',
-    chip_whatsapp:        'WhatsApp',
-    chip_github:          'GitHub',
-    chip_cv:              'Baixar CV',
-    nav_about:            'Sobre',
-    nav_xp:               'Trajeto',
-    nav_tools:            'Ferramentas',
-    nav_contact:          'Contato',
-    nav_edu:              'Educação',
-    nav_certs:            'Certificados',
-    nav_projects:         'Projetos',
-    about_title:          'Sobre mim',
-    about_body_pt:        'Sou apaixonado por computação, focado em programação e raciocínio lógico. Curso Ciência da Computação na <strong>ATITUS</strong> e sigo determinado a me tornar um desenvolvedor back-end. Comecei estudando online e hoje avanço com projetos práticos na faculdade e fora dela.',
-    goal_title:           'Objetivo',
-    goal_list_pt:         '<li>Tornar-me um desenvolvedor <strong>back-end</strong> sólido, entregando APIs escaláveis e bem testadas.</li><li>Concluir a graduação com alta performance acadêmica.</li><li>Contribuir em projetos que ajudem pessoas em escala.</li>',
-    xp_title:             'Trajeto<span class="dot">.</span>',
-    xp_air_dev1_role_title:'Desenvolvedor 1 (Node.js / NestJS)',
-    xp_air_dev1_company:  'AI/R — Part-time (Remoto)',
-    xp_air_dev1_date:     'fev/2026 — presente',
-    xp_air_dev1_list_pt:  '<li>Desenvolvimento e manutenção de APIs REST prontas para produção com Node.js e NestJS.</li><li>Padronização de testes, revisão de código e padrões de integração para elevar qualidade e performance.</li><li>Entregas com Swagger/OpenAPI e Docker, garantindo confiabilidade em produção.</li>',
-    xp_air_intern_role_title:'Estagiário de Desenvolvimento Back-end (Node.js) — Contexto AWS',
-    xp_air_intern_company:'AI/R — Estágio (Remoto)',
-    xp_air_intern_date:   'nov/2025 — fev/2026',
-    xp_air_intern_list_pt:'<li>Desenvolvimento back-end com Node.js em contexto de nuvem AWS.</li><li>Implementação de endpoints e rotinas server-side com foco em qualidade e boas práticas.</li><li>Colaboração em revisão de código e versionamento com Git/GitHub.</li>',
-    xp_compass_role_title:'Estagiário de Desenvolvimento Back-end (AWS)',
-    xp_compass_company:   'Compass UOL',
-    xp_compass_date:      'fev/2025 — jul/2025',
-    xp_compass_list_pt:   '<li>Atuação no desenvolvimento de serviços back-end utilizando AWS.</li><li>Implementação de endpoints e rotinas server-side com foco em qualidade e boas práticas.</li><li>Colaboração em revisão de código e rotinas de versionamento com Git/GitHub.</li>',
-    xp_inotek_role_title: 'Desenvolvedor Full-Stack',
-    xp_inotek_company:    'Inotek',
-    xp_inotek_date:       'mar/2024 — jul/2024',
-    xp_inotek_list_pt:    '<li>Desenvolvimento de aplicações web com Angular.</li><li>Foco em melhorar a experiência em dispositivos Android.</li><li>Apoio à manutenção do produto principal.</li>',
-    langs_title:          'Idiomas',
-    langs_grid_pt:        '<div class="language-item"><span class="language-name">Português</span><span class="language-level">Nativo</span></div><div class="language-item"><span class="language-name">Inglês</span><span class="language-level">Fluente</span></div>',
-    edu_title:            'Educação',
-    edu_items_pt:         '<div class="education-item"><h3>ATITUS Educação</h3><p>Ciência da Computação</p></div><div class="education-item"><h3>Hammond High school</h3><p>High school</p></div><div class="education-item"><h3>Escola Scalabrini</h3><p>Ensino Médio</p></div><div class="education-item"><h3>Escola Conceição</h3><p>Ensino Fundamental</p></div>',
-    tech_title:           'Tecnologias',
-    projects_title:       'Projetos<span class="dot">.</span>',
-    certs_title:          'Certificados<span class="dot">.</span>',
-    certs_empty:          'Nenhum certificado adicionado ainda.',
-    footer_email:         'E-mail',
-    footer_github:        'GitHub',
-    alert_title:          'Pronto!',
-    alert_msg:            'E-mail copiado com sucesso.',
-    alert_ok:             'OK'
+    doc_title:     'Portfólio • Gabriel Henrique Gemelli',
+    skip:          'Pular para o conteúdo',
+    nav_about:     'Sobre',
+    nav_xp:        'Trajeto',
+    nav_tools:     'Ferramentas',
+    nav_contact:   'Contato',
+    hero_label:    'O que eu faço',
+    hero_title:    'Eu construo o que você <em>não vê.</em>',
+    hero_sub:      'Back ends em Java e Spring Boot, com IA que responde citando a fonte.',
+    about_label:   'Sobre',
+    about_note:    'escrevo APIs desde então.',
+    about_body_pt: 'Sou desenvolvedor back-end na AI/R, com Java e Spring Boot. Estudo Ciência da Computação na ATITUS. Meu maior projeto é o OrganizAI, um assistente que lê documentos de obra e responde citando o documento e a página.',
+    xp_title:      'Trajeto<span class="dot">.</span>',
+    xp_hint:       'Do mais recente ao primeiro.',
+    projects_title:'Projetos<span class="dot">.</span>',
+    certs_title:   'Certificados<span class="dot">.</span>',
+    certs_empty:   'Nenhum certificado disponível no momento.',
+    footer_place:  'Passo Fundo, RS',
+    footer_top:    'topo ↑',
+    modal_close:   'Fechar',
+    alert_title:   'Pronto!',
+    alert_msg:     'E-mail copiado com sucesso.',
+    alert_ok:      'OK'
   },
   en: {
-    doc_title:            'Portfolio • Gabriel Henrique Gemelli',
-    subtitle_pt:          'Back-end Developer',
-    location_pt:          '📍 Passo Fundo, Brazil • Portuguese/English',
-    chip_copy:            'Copy email',
-    chip_whatsapp:        'WhatsApp',
-    chip_github:          'GitHub',
-    chip_cv:              'Download CV',
-    nav_about:            'About',
-    nav_xp:               'Path',
-    nav_tools:            'Tools',
-    nav_contact:          'Contact',
-    nav_edu:              'Education',
-    nav_certs:            'Certificates',
-    nav_projects:         'Projects',
-    about_title:          'About',
-    about_body_pt:        'I am passionate about CS, focused on programming and logical thinking. I study Computer Science at <strong>ATITUS</strong> and I\'m determined to become a back-end developer. I started studying online and now keep progressing with practical projects.',
-    goal_title:           'Goal',
-    goal_list_pt:         '<li>Become a solid <strong>back-end</strong> developer, delivering scalable and well-tested APIs.</li><li>Graduate with strong academic performance.</li><li>Contribute to projects that help people at scale.</li>',
-    xp_title:             'Path<span class="dot">.</span>',
-    xp_air_dev1_role_title:'Developer 1 (Node.js / NestJS)',
-    xp_air_dev1_company:  'AI/R — Part-time (Remote)',
-    xp_air_dev1_date:     'Feb/2026 — Present',
-    xp_air_dev1_list_pt:  '<li>Building and maintaining production-ready REST APIs with Node.js and NestJS.</li><li>Standardizing testing, code review practices, and integration patterns to raise quality and performance.</li><li>Delivering with Swagger/OpenAPI and Docker, strengthening reliability in production.</li>',
-    xp_air_intern_role_title:'Back-end Development Intern (Node.js) — AWS Cloud Context',
-    xp_air_intern_company:'AI/R — Internship (Remote)',
-    xp_air_intern_date:   'Nov/2025 — Feb/2026',
-    xp_air_intern_list_pt:'<li>Back-end development with Node.js in an AWS cloud context.</li><li>Implemented endpoints and server-side routines emphasizing quality and best practices.</li><li>Collaborated on code reviews and version control with Git/GitHub.</li>',
-    xp_compass_role_title:'Back-end Development Intern (AWS)',
-    xp_compass_company:   'Compass UOL',
-    xp_compass_date:      'Feb/2025 — Jul/2025',
-    xp_compass_list_pt:   '<li>Worked on back-end services using AWS.</li><li>Implemented endpoints and server-side routines emphasizing quality and best practices.</li><li>Collaborated on code reviews and version control with Git/GitHub.</li>',
-    xp_inotek_role_title: 'Full-Stack Developer',
-    xp_inotek_company:    'Inotek',
-    xp_inotek_date:       'Mar/2024 — Jul/2024',
-    xp_inotek_list_pt:    '<li>Web app development with Angular.</li><li>Improving UX on Android devices.</li><li>Support maintaining the main product.</li>',
-    langs_title:          'Languages',
-    langs_grid_pt:        '<div class="language-item"><span class="language-name">Portuguese</span><span class="language-level">Native</span></div><div class="language-item"><span class="language-name">English</span><span class="language-level">Fluent</span></div>',
-    edu_title:            'Education',
-    edu_items_pt:         '<div class="education-item"><h3>ATITUS Education</h3><p>Computer Science</p></div><div class="education-item"><h3>Hammond High school</h3><p>High school</p></div><div class="education-item"><h3>Escola Scalabrini</h3><p>High School</p></div><div class="education-item"><h3>Escola Conceição</h3><p>Elementary School</p></div>',
-    tech_title:           'Technologies',
-    projects_title:       'Projects<span class="dot">.</span>',
-    certs_title:          'Certificates<span class="dot">.</span>',
-    certs_empty:          'No certificates added yet.',
-    footer_email:         'Email',
-    footer_github:        'GitHub',
-    alert_title:          'Done!',
-    alert_msg:            'Email copied successfully.',
-    alert_ok:             'OK'
+    doc_title:     'Portfolio • Gabriel Henrique Gemelli',
+    skip:          'Skip to content',
+    nav_about:     'About',
+    nav_xp:        'Path',
+    nav_tools:     'Tools',
+    nav_contact:   'Contact',
+    hero_label:    'What I do',
+    hero_title:    'I build what you <em>don\'t see.</em>',
+    hero_sub:      'Java and Spring Boot back ends, with AI that answers and cites its source.',
+    about_label:   'About',
+    about_note:    'building APIs since then.',
+    about_body_pt: 'I\'m a backend developer at AI/R, working with Java and Spring Boot. I study Computer Science at ATITUS. My largest project is OrganizAI, an assistant that reads construction documents and answers by citing the document and page.',
+    xp_title:      'Path<span class="dot">.</span>',
+    xp_hint:       'Most recent first.',
+    projects_title:'Projects<span class="dot">.</span>',
+    certs_title:   'Certificates<span class="dot">.</span>',
+    certs_empty:   'No certificates available at the moment.',
+    footer_place:  'Passo Fundo, RS',
+    footer_top:    'top ↑',
+    modal_close:   'Close',
+    alert_title:   'Done!',
+    alert_msg:     'Email copied successfully.',
+    alert_ok:      'OK'
   }
 };
+
+const SOBRE = {
+  stats: [
+    { n: '3',   pt: 'empresas: AI/R, Compass UOL e Inotek', en: 'companies: AI/R, Compass UOL and Inotek' },
+    { n: '400', pt: 'horas de programa prático na Compass UOL', en: 'hours of hands-on training at Compass UOL' },
+    { n: '55',  pt: 'migrations no banco do OrganizAI', en: 'database migrations in OrganizAI' }
+  ],
+  highlights: {
+    pt: ['Back end em Java e Spring Boot na AI/R', 'OrganizAI no ar na AWS: fiz o back end, o front end e a integração AWS, em grupo', 'AWS Certified Cloud Practitioner'],
+    en: ['Java and Spring Boot back end at AI/R', 'OrganizAI live on AWS: I built the back end, front end and AWS integration, in a group', 'AWS Certified Cloud Practitioner']
+  }
+};
+
+function renderAbout() {
+  const stats = document.getElementById('about-stats');
+  const hl = document.getElementById('about-highlights');
+  if (!stats || !hl) return;
+  stats.innerHTML = SOBRE.stats.map(x => `<li><span class="stat-n">${x.n}</span><span class="label">${x[currentLang]}</span></li>`).join('');
+  hl.innerHTML = SOBRE.highlights[currentLang].map((x, i) => `<li><span class="label label--accent">0${i + 1}</span><span>${x}</span></li>`).join('');
+}
 
 // =====================
 // RENDER CERTIFICADOS
@@ -409,9 +379,12 @@ function setLang(lang) {
   });
   document.title = dict.doc_title || document.title;
   document.querySelectorAll('[data-set-lang]').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+    const on = btn.getAttribute('data-set-lang') === lang;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', on);
   });
   localStorage.setItem('lang', lang);
+  renderAbout();
   renderTrajeto();
   renderContact();
   renderTools();

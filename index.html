@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#sobre">Pular para o conteúdo</a>
+  <a class="skip-link" href="#sobre" data-i18n="skip">Pular para o conteúdo</a>
 
   <header class="navbar" id="navbar">
     <div class="nav-container">
@@ -36,9 +36,9 @@
   <main>
     <section class="hero" id="hero">
       <div class="container">
-        <p class="label label--accent" data-i18n="hero_label">Gabriel Henrique Gemelli</p>
-        <h1 class="hero-title" data-i18n="hero_title">Back-end <em>em construção.</em></h1>
-        <p class="hero-sub" data-i18n="hero_sub">Texto provisório do hero.</p>
+        <p class="label label--accent" data-i18n="hero_label">O que eu faço</p>
+        <h1 class="hero-title" data-i18n="hero_title">Eu construo o que você <em>não vê.</em></h1>
+        <p class="hero-sub" data-i18n="hero_sub">Back ends em Java e Spring Boot, com IA que responde citando a fonte.</p>
       </div>
     </section>
 
@@ -46,12 +46,13 @@
       <div class="container about">
         <div class="about-year">
           <p class="label label--accent" data-i18n="about_label">Sobre</p>
-          <p class="about-big" aria-hidden="true">2024</p>
-          <p class="serif-note" data-i18n="about_note">Texto provisório.</p>
+          <p class="about-big">2023</p>
+          <p class="serif-note" data-i18n="about_note">escrevo APIs desde então.</p>
         </div>
         <div class="about-body">
-          <p class="about-lead" data-i18n="about_body_pt">Texto provisório do sobre.</p>
+          <p class="about-lead" data-i18n="about_body_pt">Sou desenvolvedor back-end na AI/R, com Java e Spring Boot. Estudo Ciência da Computação na ATITUS. Meu maior projeto é o OrganizAI, um assistente que lê documentos de obra e responde citando o documento e a página.</p>
           <ul class="stats" id="about-stats"></ul>
+          <ol class="highlights" id="about-highlights"></ol>
         </div>
       </div>
     </section>
@@ -86,7 +87,7 @@
       <div class="container">
         <h2 class="section-title" data-i18n="certs_title">Certificados<span class="dot">.</span></h2>
         <div id="cert-grid" class="certs-grid"></div>
-        <p id="cert-empty" class="label" data-i18n="certs_empty" style="display:none">Nenhum certificado adicionado ainda.</p>
+        <p id="cert-empty" class="label" data-i18n="certs_empty" style="display:none">Nenhum certificado disponível no momento.</p>
       </div>
     </section>
 
