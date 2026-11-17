@@ -271,6 +271,10 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .contact-line:hover { color: var(--orange-text); }
 .contact-line:hover .contact-arrow { transform: translate(4px, -4px); }
 
+/* títulos divididos por palavra/letra (animacao.js) */
+.word { display: inline-block; white-space: nowrap; }
+.char { display: inline-block; will-change: transform, opacity; }
+
 /* =====================
    MOVIMENTO REDUZIDO
    ===================== */
