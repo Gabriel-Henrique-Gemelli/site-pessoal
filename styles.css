@@ -318,6 +318,21 @@ body { overflow-x: clip; }
   }
 }
 
+/* as letras sobem de baixo da própria linha: corta na vertical para não cobrir o que vem abaixo
+   (ex.: a legenda do ano). O padding extra evita cortar ascendentes/descendentes; a margem negativa compensa. */
+.js-anim .about-big,
+.js-anim .section-title {
+  overflow-x: visible;
+  overflow-y: clip;
+  padding-block: 0.12em 0.2em;
+  margin-block: -0.12em -0.2em;
+}
+/* o ano não tem descendentes: quase sem folga embaixo, para a legenda ficar livre */
+.js-anim .about-big {
+  padding-block: 0.12em 0.03em;
+  margin-block: calc(12px - 0.12em) calc(12px - 0.03em);
+}
+
 /* títulos divididos por palavra/letra (animacao.js) */
 .word { display: inline-block; white-space: nowrap; }
 .char { display: inline-block; will-change: transform, opacity; }
